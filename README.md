@@ -46,13 +46,17 @@ py -m venv env
 ```
 kyucsa/env/Scripts/activate.bat
 ```
-5. Change into the project directory
+5.Change into the root to install the dependencies
 ```
-cd kyucsa/website
+cd kyucsa
 ```
 6. Install the project dependencies using pip:
 ```
 pip install -r requirements.txt
+```
+7. Change into the project directory
+```
+cd kyucsa/website
 ```
 
 ### Running the Development Server
