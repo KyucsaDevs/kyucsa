@@ -1,6 +1,140 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
-<div class="container">
-	<h1 class="text-center">KYUCA HOME PAGE</h1>
+<div class="container pb-5">
+	<body class="x-hidden">
+		<header id="hero" class="hero">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-12 col-sm-6">
+						<div class="hero-content">
+							<div class="hero-title__group">
+								<div class="hero-title">
+									<h2 class="zuri">Kyambogo University Computing<br>Students Association (KYUCSA).</h2>
+								</div>
+								<div class="Hero--Subtitle">
+									<p class="lead">
+										<first-letter> <b>KYUCSA</b></first-letter> is a students Association which aims at
+										helping
+										university students learn various skills in Tech. These include but are not limited
+										to
+										<second-letter> mobile</second-letter> and<first-letter> web development skills
+										</first-letter>, <third-letter>design thinking skills</third-letter>, Networking &
+										System Adminstration, and
+										<forth-letter> leadership skills.</forth-letter>
+									</p>
+								</div>
+							</div><a href="technologies.html" class="hero-button" rel="noopener"><i
+									class="fab fa-meetup"></i> &nbsp; Explore</a>
+						</div>
+					</div>
+					<div class="col-12 col-sm-5 ml-auto ml-pic">
+						<div class="hero-figure"><img data-src="{% static '/images/assets/diversity.png' %}" class="img-fluid w-100"
+								alt="Illustration of diversity in our developer community"></div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<section id="overview" class="section-spacer">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 col-12">
+						<div class="feature-card">
+							<div class="feature-card__body"><i class="fas fa-rocket ghost-blue"></i>
+								<h4 class="feature-title">Concept of KYUCSA</h4>
+								<p>The best way to learn is through practice and exposure to various technologies. By
+									engaging in such activities, members are able to gain development and networking
+									skilling.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 col-12">
+						<div class="feature-card">
+							<div class="feature-card__body"><i class="fas fa-lightbulb ghost-green"></i>
+								<h4 class="feature-title">Why KYUCSA?</h4>
+								<p>For students to learn practical skills, solve problems through technology and inspire
+									them to be world class developers, product designers, cyber experts and changemakers.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 col-12">
+						<div class="feature-card m-0">
+							<div class="feature-card__body"><i class="fas fa-users ghost-red"></i>
+								<h4 class="feature-title">Target audience</h4>
+								<p>KYUCSA activities are targeted at University students and any individual who wants to
+									learn or build their development skills as well as grow their knowledge concerning tech.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="opportunities" class="section-spacer section-opp">
+			<div class="container">
+				<header class="section-header text-center">
+					<h2 class="section-title-custom wow fadeInUp">Opportunities KYUCSA provide students with</h2>
+				</header>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="">
+							<div class="card-body wow fadeInUp">
+								<ul>
+									<li>Grow their knowledge on developer technologies and more through peer to peer
+										workshops
+										and
+										events.
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="">
+							<div class="card-body wow fadeInUp">
+								<ul>
+									<li>Gain relevant industry experience by solving problems for local organizations with
+										technology based solutions.
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="">
+							<div class="card-body wow fadeInUp">
+								<ul>
+									<li>Showcase their prototypes and solutions to their local community and industry
+										leaders.
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+	
+					<div class="col-sm-6">
+						<div class="">
+							<div class="card-body wow fadeInUp">
+								<ul>
+									<li>Getting inspiration to become world-class developers and changemakers from
+										sharing others' success stories.
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+	
+				</div>
+			</div>
+		</section>
+		
+		<div class="map">
+			<iframe style="border:0; width: 100%; height: 350px;"
+				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7447192218733!2d32.6220694348877!3d0.3480198000000032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dba2ab85b6945%3A0x3410e28a61297de3!2sDepartment%20of%20Computer%20Science%20Lab!5e0!3m2!1sen!2sug!4v1666909258247!5m2!1sen!2sug"
+				frameborder="0" allowfullscreen></iframe>
+		</div>
 </div>
 {%endblock%}

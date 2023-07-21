@@ -6,16 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#f8f9fa"/>
     <meta name="description" content="Kyambogo University Computing Students Association Official Website"/>
+    <meta name="author" content="KYUCSA">
+    <meta name="description"
+        content="Kyambogo University Computing Students Association, a community for university students to learn mobile, web development, and various tech skills.">
+    <meta name="keywords" content="kyucsa, developer community, kyambogo university, computer science">
+    <title>{% block title %}{% endblock %} | Spearheading ICT Innovations</title>
     {% load static %}
     <link rel="icon" type="image/x-icon" href="{% static '/images/favicon.ico' %}">
-    <title>{% block title %}{% endblock %} | Spearheading ICT Innovations</title>
+    <link rel="manifest" href="{% static 'manifest.json' %}">
+    <link rel="icon" href="{% static './images/icon.png' %}" type="image/png">
+    <link rel="stylesheet" href="{% static './css/responsive.css' %}">
+    <link rel="stylesheet" href="{% static './css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static './css/bootstrap.min.css' %}">
+    <link rel="dns-prefetch" href="https://docs.google.com">
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans:400,500,700|Material+Icons" rel="stylesheet"
+        type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+        integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static './css/pace-theme.css' %}">
+    <link rel="stylesheet" href="{% static './css/styles.css' }">
+    <link rel="stylesheet" href="{% static './css/responsive.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script>(function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-124904500-1', 'auto');
+    ga('send', 'pageview');
+  </script>
 </head>
 <body style="background-color: #f8f9fa;">
   <div class="container-fluid">
     <!--Top Navbar-->
-  <nav class="navbar navbar-expand-sm text-black border-bottom">
+  <nav class="navbar navbar-expand-sm text-black border-bottom sticky-top bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static '/images/logo.png' %}" class="" width="50px"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
@@ -27,6 +58,15 @@
           <a class="nav-link" href="{% url 'index' %}">Home</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="{% url 'gallery' %}">Technologies</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'gallery' %}">Workshops</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'gallery' %}">Team</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="{% url 'gallery' %}">Gallery</a>
         </li>
         <li class="nav-item">
@@ -35,6 +75,7 @@
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Events</a>
         <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="{% url 'upcomingevents' %}">Live Event</a></li>
           <li><a class="dropdown-item" href="{% url 'upcomingevents' %}">Upcoming Events</a></li>
           <li><a class="dropdown-item" href="{% url 'pastevents' %}">Past Events</a></li>
         </ul>
@@ -53,7 +94,7 @@
     {% block content %}
     {% endblock %}
     <!--Footer-->
-    <nav class="navbar navbar-expand-sm justify-content-center fixed-bottom">
+    <nav class="navbar navbar-expand-sm justify-content-center">
       <ul class="navbar-nav text-center">
         <li class="nav-item">
           <p><small>&copy; <script>document.write(new Date().getFullYear());</script> KYUCSA   All rights Reserved</small></p>
@@ -62,5 +103,60 @@
     </nav>
     <!--Footer End-->
   </div>
+  <!--Scripts-->
+  <script>
+    function imageIntersectionObserverCallback(imageEntries, observer) {
+        imageEntries.forEach(imgEntry => {
+            if (imgEntry.isIntersecting) {
+                imgEntry.target.setAttribute('src', imgEntry.target.dataset.src);
+                observer.unobserve(imgEntry.target);
+            }
+        })
+    }
+    const imageObserver = new IntersectionObserver(imageIntersectionObserverCallback, { rootMargin: '30px 0px' });
+    imageObserver.POLL_INTERVAL = 200;
+    imageObserver.USE_MUTATION_OBSERVER = false;
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+    })
+</script>
+<script>
+        ;
+
+    function iframeObserverCallback(iframeEntries, observer) {
+        iframeEntries.forEach(iframe => {
+            if (iframe.isIntersecting && window.matchMedia('(min-width: 450px)').matches) {
+                iframe.target.setAttribute('src', iframe.target.dataset.urllink);
+                observer.unobserve(iframe.target);
+            }
+        })
+    }
+
+    const iframeObserver = new IntersectionObserver(iframeObserverCallback, { rootMargin: '30px 0px' });
+    iframeObserver.POLL_INTERVAL = 200;
+    iframeObserver.USE_MUTATION_OBSERVER = false;
+    document.querySelectorAll('iframe[data-urllink]').forEach(img => {
+        iframeObserver.observe(img);
+    });
+
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(function () {
+                    console.log("Service Worker Registered,");
+                });
+        });
+    }
+</script>
+<script src="{% static './js/vendors/pace.js' %}"></script>
+<script src="{% static './js/vendors/jquery.min.js' %}"></script>
+<script src="{% static './js/vendors/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static './js/vendors/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static './js/vendors/jquery.easing.min.js' %}"></script>
+<script src="{% static './js/vendors/swiper.min.js' %}"></script>
+<script src="{% static './js/vendors/owl.carousel.min.js' %}"></script>
+<script src="{% static './js/vendors/hammer.js' %}"></script>
+<script src="{% static './js/custom.js' %}"></script>
+  <!--end of scripts-->
 </body>
 </html>    
