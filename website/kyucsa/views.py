@@ -6,20 +6,38 @@ def index(request):
 	template = loader.get_template('index.html')
 	return HttpResponse(template.render())
 
+def technologies(request):
+	template = loader.get_template('technologies.html')
+	return HttpResponse(template.render())
+
+def workshops(request):
+	template = loader.get_template('workshops.html')
+	return HttpResponse(template.render())
+
+def team(request):
+	template = loader.get_template('team.html')
+	return HttpResponse(template.render())
+
 def gallery(request):
-	return render(request,'gallery.html')
+	template = loader.get_template('gallery.html')
+	return HttpResponse(template.render())
 
-def live(request):
-	return render(request,'live.html')
-
-def pastevents(request):
-	return render(request,'pastevents.html')
+def live_events(request):
+	template = loader.get_template('live.html')
+	return HttpResponse(template.render())
 
 def upcomingevents(request):
-	return render(request,'upcomingevents.html')
+	template = loader.get_template('upcomingevents.html')
+	return HttpResponse(template.render())
+
+def pastevents(request):
+	template = loader.get_template('pastevents.html')
+	return HttpResponse(template.render())
 
 def verify(request):
-	return render(request,'verify.html')
+	template = loader.get_template('verify.html')
+	return HttpResponse(template.render())
 
 def membership(request):
-	return render(request,'signup.html')
+	template = loader.get_template('signup.html')
+	return HttpResponse(template.render())

@@ -55,24 +55,21 @@
           <a class="nav-link" href="{% url 'index' %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'gallery' %}">Technologies</a>
+          <a class="nav-link" href="{% url 'technologies' %}">Technologies</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'gallery' %}">Workshops</a>
+          <a class="nav-link" href="{% url 'workshops' %}">Workshops</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'gallery' %}">Team</a>
+          <a class="nav-link" href="{% url 'team' %}">Team</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'gallery' %}">Gallery</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'live' %}">Live</a>
-        </li>
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Events</a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="{% url 'upcomingevents' %}">Live Event</a></li>
+          <li><a class="dropdown-item" href="{% url 'live_events' %}">Live Event</a></li>
           <li><a class="dropdown-item" href="{% url 'upcomingevents' %}">Upcoming Events</a></li>
           <li><a class="dropdown-item" href="{% url 'pastevents' %}">Past Events</a></li>
         </ul>
