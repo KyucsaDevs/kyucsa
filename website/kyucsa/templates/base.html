@@ -5,16 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#f8f9fa"/>
-    <meta name="description" content="Kyambogo University Computing Students Association Official Website"/>
     <meta name="author" content="KYUCSA">
-    <meta name="description"
-        content="Kyambogo University Computing Students Association, a community for university students to learn mobile, web development, and various tech skills.">
+    <meta name="description" content="Kyambogo University Computing Students Association, a community for university students to learn mobile, web development, and various tech skills.">
     <meta name="keywords" content="kyucsa, developer community, kyambogo university, computer science">
     <title>{% block title %}{% endblock %} | Spearheading ICT Innovations</title>
     {% load static %}
     <link rel="icon" type="image/x-icon" href="{% static '/images/favicon.ico' %}">
-    <link rel="manifest" href="{% static 'manifest.json' %}">
-    <link rel="icon" href="{% static './images/icon.png' %}" type="image/png">
+    <link rel="icon" href="{% static '/images/icon.png' %}" type="image/png">
     <link rel="stylesheet" href="{% static './css/responsive.css' %}">
     <link rel="stylesheet" href="{% static './css/owl.carousel.min.css' %}">
     <link rel="stylesheet" href="{% static './css/bootstrap.min.css' %}">
@@ -48,7 +45,7 @@
     <!--Top Navbar-->
   <nav class="navbar navbar-expand-sm text-black border-bottom sticky-top bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static '/images/logo.png' %}" class="" width="50px"></a>
+    <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static '/images/logo.png' %}" class="" width="60px"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -148,15 +145,15 @@
         });
     }
 </script>
-<script src="{% static './js/vendors/pace.js' %}"></script>
-<script src="{% static './js/vendors/jquery.min.js' %}"></script>
-<script src="{% static './js/vendors/bootstrap.bundle.min.js' %}"></script>
-<script src="{% static './js/vendors/jquery.magnific-popup.min.js' %}"></script>
-<script src="{% static './js/vendors/jquery.easing.min.js' %}"></script>
-<script src="{% static './js/vendors/swiper.min.js' %}"></script>
-<script src="{% static './js/vendors/owl.carousel.min.js' %}"></script>
-<script src="{% static './js/vendors/hammer.js' %}"></script>
-<script src="{% static './js/custom.js' %}"></script>
+<script src="{% static '/js/vendors/pace.js' %}"></script>
+<script src="{% static '/js/vendors/jquery.min.js' %}"></script>
+<script src="{% static '/js/vendors/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static '/js/vendors/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static '/js/vendors/jquery.easing.min.js' %}"></script>
+<script src="{% static '/js/vendors/swiper.min.js' %}"></script>
+<script src="{% static '/js/vendors/owl.carousel.min.js' %}"></script>
+<script src="{% static '/js/vendors/hammer.js' %}"></script>
+<script src="{% static '/js/custom.js' %}"></script>
   <!--end of scripts-->
 </body>
 </html>    
