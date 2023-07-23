@@ -1,43 +1,29 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.template import loader
 
 def index(request):
-	template = loader.get_template('index.html')
-	return HttpResponse(template.render())
+	title="Home"
+	return render(request, 'index.html', {'title': title})
 
 def technologies(request):
-	template = loader.get_template('technologies.html')
-	return HttpResponse(template.render())
+	title="Technologies"
+	return render(request, 'technologies.html', {'title': title})
 
-def workshops(request):
-	template = loader.get_template('workshops.html')
-	return HttpResponse(template.render())
+def events(request):
+	title="Events"
+	return render(request, 'events.html', {'title': title})
 
 def team(request):
-	template = loader.get_template('team.html')
-	return HttpResponse(template.render())
+	title="Team"
+	return render(request, 'team.html', {'title': title})
 
 def gallery(request):
-	template = loader.get_template('gallery.html')
-	return HttpResponse(template.render())
-
-def live_events(request):
-	template = loader.get_template('live.html')
-	return HttpResponse(template.render())
-
-def upcomingevents(request):
-	template = loader.get_template('upcomingevents.html')
-	return HttpResponse(template.render())
-
-def pastevents(request):
-	template = loader.get_template('pastevents.html')
-	return HttpResponse(template.render())
+	title="Gallery"
+	return render(request, 'gallery.html',{'title': title})
 
 def verify(request):
-	template = loader.get_template('verify.html')
-	return HttpResponse(template.render())
+	title="Membership Verification"
+	return render(request, 'verify.html', {'title': title})
 
 def membership(request):
-	template = loader.get_template('signup.html')
-	return HttpResponse(template.render())
+	title="SignUp"
+	return render(request, 'signup.html', {'title': title})

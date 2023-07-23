@@ -826,13 +826,12 @@ section {
   margin-bottom: 20px;
 }
 #team .member .pic {
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   
   overflow: hidden;
   height: 260px;
 }
 #team .member .pic img {
-  background-position: center;
   border-radius: 5px;
   max-width: 100%;
 }
@@ -850,10 +849,10 @@ section {
   margin-top: 10px;
 }
 #team .member .social a {
-  color: #1100ff;
+  color: #c9c7c7;
 }
 #team .member .social a:hover {
-  color: #2F5BE7;
+  color: #1943ce;
 }
 #team .member .social i {
   font-size: 18px;

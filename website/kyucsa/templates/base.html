@@ -8,7 +8,7 @@
     <meta name="author" content="KYUCSA">
     <meta name="description" content="Kyambogo University Computing Students Association, a community for university students to learn mobile, web development, and various tech skills.">
     <meta name="keywords" content="kyucsa, developer community, kyambogo university, computer science">
-    <title>{% block title %}{% endblock %} | Spearheading ICT Innovations</title>
+    <title>{{title }} | Spearheading ICT Innovations</title>
     <!--Loading styles, icons and static files-->
     {% load static %}
     <link rel="icon" type="image/x-icon" href="{% static '/images/favicon.ico' %}">
@@ -29,7 +29,7 @@
     <!-- Vendor CSS Files -->
     <link href="{% static './vendor/aos/aos.css' %}" rel="stylesheet">
     <!--link href="{% static './vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet"-->
-    <!--link href="{% static './vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet"-->
+    <link href="{% static './vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
     <link href="{% static './vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
     <link href="{% static './vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
     <link href="{% static './vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
@@ -79,7 +79,7 @@
           <a class="nav-link" href="{% url 'technologies' %}">Technologies</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'workshops' %}">Workshops/Events</a>
+          <a class="nav-link" href="{% url 'events' %}">Events</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'team' %}">Team</a>
