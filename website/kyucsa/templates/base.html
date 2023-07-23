@@ -18,8 +18,8 @@
     <link rel="stylesheet" href="{% static './css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static './css/pace-theme.css' %}">
     <!-- Favicons -->
-    <link href="{% static './images/logo.png' %}" rel="icon">
-    <link href="{% static '/assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+    <link href="{% static '/images/logo.png' %}" rel="icon">
+    <link href="{% static './assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
     <!--Font Awesome Icons-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
         integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
@@ -34,7 +34,7 @@
     <link href="{% static './vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
     <link href="{% static './vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
     <!-- Template Main CSS File -->
-    <!--link href="{% static './css/custom-tm.css' %}" rel="stylesheet"-->
+    <link href="{% static './css/custom-tm.css' %}" rel="stylesheet">
     <!-- extra css  -->
     <link rel="stylesheet" href="{% static './css/styles.css' %}">
     <link rel="stylesheet" href="{% static './css/responsive.css' %}">
@@ -58,12 +58,12 @@
     ga('send', 'pageview');
   </script>
 </head>
-<body style="background-color: #f8f9fa;">
-  <div class="container-fluid">
+<body>
+  <div class="container-fluid bg-light">
     <!--Top Navbar-->
   <nav class="navbar navbar-expand-sm text-black border-bottom sticky-top bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static '/images/logo.png' %}" class="" width="60px"></a>
+    <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static '/images/logo.png' %}" height="60"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -76,7 +76,7 @@
           <a class="nav-link" href="{% url 'technologies' %}">Technologies</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'workshops' %}">Workshops</a>
+          <a class="nav-link" href="{% url 'workshops' %}">Workshops/Events</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'team' %}">Team</a>
@@ -84,14 +84,6 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'gallery' %}">Gallery</a>
         </li>
-        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Events</a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="{% url 'live' %}">Live Event</a></li>
-          <li><a class="dropdown-item" href="{% url 'upcomingevents' %}">Upcoming Events</a></li>
-          <li><a class="dropdown-item" href="{% url 'pastevents' %}">Past Events</a></li>
-        </ul>
-      </li>
       <li class="nav-item">
           <a class="nav-link" href="{% url 'verify' %}">Verify</a>
       </li>
@@ -179,7 +171,7 @@
 
 
 <!-- Template Main JS File -->
-<script src="./js/main.js"></script>
+<script src="{% static './js/main.js' %}"></script>
   <!--end of scripts-->
 </body>
 </html>    

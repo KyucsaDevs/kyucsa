@@ -8,15 +8,6 @@ html, body {
   font-size: 14px;
 }
 
-body {
-  font-family: "Google Sans", sans-serif;
-  font-size: 1rem;
-  color: #637282;
-  overflow-x: hidden;
-  font-weight: normal;
-  letter-spacing: -.3px;
-}
-
 .has-sticky-header {
   padding-top: 72px;
 }

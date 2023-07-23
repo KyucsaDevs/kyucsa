@@ -9,7 +9,6 @@ html, body {
 }
 
 body {
-  font-family: "Google Sans", sans-serif;
   font-size: 1rem;
   color: #637282;
   overflow-x: hidden;
@@ -17,9 +16,6 @@ body {
   letter-spacing: -.3px;
 }
 
-.has-sticky-header {
-  padding-top: 72px;
-}
 first-letter {
   color: #557DBF;
   font-weight: 400
@@ -103,8 +99,6 @@ p {
 }
 
 .content {
-  padding-top: 100px;
-  padding-bottom: 100px;
 }
 
 .container {
@@ -115,7 +109,6 @@ p {
   color: #ff6600;
   color: #006eff;
   color: #002fff;
-  color: #585858;
 }
 
 .section-spacer {
