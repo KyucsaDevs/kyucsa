@@ -9,20 +9,38 @@
     <meta name="description" content="Kyambogo University Computing Students Association, a community for university students to learn mobile, web development, and various tech skills.">
     <meta name="keywords" content="kyucsa, developer community, kyambogo university, computer science">
     <title>{% block title %}{% endblock %} | Spearheading ICT Innovations</title>
+    <!--Loading styles, icons and static files-->
     {% load static %}
     <link rel="icon" type="image/x-icon" href="{% static '/images/favicon.ico' %}">
     <link rel="icon" href="{% static '/images/icon.png' %}" type="image/png">
     <link rel="stylesheet" href="{% static './css/responsive.css' %}">
     <link rel="stylesheet" href="{% static './css/owl.carousel.min.css' %}">
     <link rel="stylesheet" href="{% static './css/bootstrap.min.css' %}">
-    <link rel="dns-prefetch" href="https://docs.google.com">
-    <link href="https://fonts.googleapis.com/css?family=Google+Sans:400,500,700|Material+Icons" rel="stylesheet"
-        type="text/css">
+    <link rel="stylesheet" type="text/css" href="{% static './css/pace-theme.css' %}">
+    <!-- Favicons -->
+    <link href="{% static './images/logo.png' %}" rel="icon">
+    <link href="{% static '/assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+    <!--Font Awesome Icons-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
         integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{% static './css/pace-theme.css' %}">
-    <link rel="stylesheet" href="{% static './css/styles.css' }">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700"
+            rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="{% static './vendor/aos/aos.css' %}" rel="stylesheet">
+    <link href="{% static './vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static './vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static './vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static './vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    <link href="{% static './vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <!--link href="{% static './css/custom-tm.css' %}" rel="stylesheet"-->
+    <!-- extra css  -->
+    <link rel="stylesheet" href="{% static './css/styles.css' %}">
     <link rel="stylesheet" href="{% static './css/responsive.css' %}">
+    <!--DNS Fetch-->
+    <link rel="dns-prefetch" href="https://docs.google.com">
+    <!--CDN and Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script>(function (i, s, o, g, r, a, m) {
@@ -69,7 +87,7 @@
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Events</a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="{% url 'live_events' %}">Live Event</a></li>
+          <li><a class="dropdown-item" href="{% url 'live' %}">Live Event</a></li>
           <li><a class="dropdown-item" href="{% url 'upcomingevents' %}">Upcoming Events</a></li>
           <li><a class="dropdown-item" href="{% url 'pastevents' %}">Past Events</a></li>
         </ul>
@@ -94,6 +112,8 @@
           <p><small>&copy; <script>document.write(new Date().getFullYear());</script> KYUCSA   All rights Reserved</small></p>
         </li>
       </ul>
+      <a href="#" class="back-to-top d-flex align-items-right"><i
+        class="bi bi-arrow-up-short"></i></a>
     </nav>
     <!--Footer End-->
   </div>
@@ -142,15 +162,26 @@
         });
     }
 </script>
-<script src="{% static '/js/vendors/pace.js' %}"></script>
-<script src="{% static '/js/vendors/jquery.min.js' %}"></script>
-<script src="{% static '/js/vendors/bootstrap.bundle.min.js' %}"></script>
-<script src="{% static '/js/vendors/jquery.magnific-popup.min.js' %}"></script>
-<script src="{% static '/js/vendors/jquery.easing.min.js' %}"></script>
-<script src="{% static '/js/vendors/swiper.min.js' %}"></script>
-<script src="{% static '/js/vendors/owl.carousel.min.js' %}"></script>
-<script src="{% static '/js/vendors/hammer.js' %}"></script>
-<script src="{% static '/js/custom.js' %}"></script>
+<script src="{% static './js/vendors/pace.js' %}"></script>
+<script src="{% static './js/vendors/jquery.min.js' %}"></script>
+<script src="{% static './js/vendors/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static './js/vendors/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static './js/vendors/jquery.easing.min.js' %}"></script>
+<script src="{% static './js/vendors/swiper.min.js' %}"></script>
+<script src="{% static './js/vendors/owl.carousel.min.js' %}"></script>
+<script src="{% static './js/vendors/hammer.js' %}"></script>
+<script src="{% static './js/custom.js' %}"></script>
+<!-- Vendor JS Files -->
+<script src="{% static './vendor/purecounter/purecounter.js' %}"></script>
+<script src="{% static './vendor/aos/aos.js' %}"></script>
+<script src="{% static './vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static './vendor/glightbox/js/glightbox.min.js' %}"></script>
+<script src="{% static './vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+<script src="{% static './vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+
+<!-- Template Main JS File -->
+<script src="./js/main.js"></script>
   <!--end of scripts-->
 </body>
 </html>    
