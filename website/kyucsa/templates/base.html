@@ -40,6 +40,10 @@
     <link rel="stylesheet" href="{% static './css/responsive.css' %}">
     <!--DNS Fetch-->
     <link rel="dns-prefetch" href="https://docs.google.com">
+    <!--Owl Carousal Styles-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" rel="stylesheet">
     <!--Bootstrap 3-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
@@ -101,6 +105,13 @@
     {% block content %}
     {% endblock %}
     <!--Footer-->
+    <!--Footer Map-->
+    <div class="map">
+      <iframe style="border:0; width: 100%; height: 350px;"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7447192218733!2d32.6220694348877!3d0.3480198000000032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dba2ab85b6945%3A0x3410e28a61297de3!2sDepartment%20of%20Computer%20Science%20Lab!5e0!3m2!1sen!2sug!4v1666909258247!5m2!1sen!2sug"
+        frameborder="0" allowfullscreen></iframe>
+    </div>
+    <!--Footer Map End-->
     <nav class="navbar navbar-expand-sm justify-content-center">
       <ul class="navbar-nav text-center">
         <li class="nav-item">
@@ -128,8 +139,6 @@
     })
 </script>
 <script>
-        ;
-
     function iframeObserverCallback(iframeEntries, observer) {
         iframeEntries.forEach(iframe => {
             if (iframe.isIntersecting && window.matchMedia('(min-width: 450px)').matches) {
@@ -154,6 +163,37 @@
                 });
         });
     }
+    //Owl-Carousal Script
+    $(document).ready(function(){
+      $('.partners-carousel').owlCarousel({
+        autoplay: true,
+       loop: true,
+       margin: 15,
+       dots: false,
+       slideTransition: 'linear',
+       autoplayTimeout: 4500,
+       autoplayHoverPause: true,
+       autoplaySpeed: 4500,
+       responsive: {
+         0: {
+           items: 2
+         },
+         500: {
+           items: 3
+         },
+         600: {
+           items: 4
+         },
+         800: {
+           items: 4
+         },
+         1200: {
+           items: 4
+         }
+
+       }
+      });
+    });
 </script>
 <script src="{% static './js/vendors/pace.js' %}"></script>
 <script src="{% static './js/vendors/jquery.min.js' %}"></script>
@@ -175,6 +215,9 @@
 
 <!-- Template Main JS File -->
 <script src="{% static './js/main.js' %}"></script>
+<!--Partners Logo Carousal Scripts-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  </script>
   <!--end of scripts-->
 </body>
 </html>    
