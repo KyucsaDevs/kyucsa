@@ -1,6 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container">
-	<h3 class="text-center">MEMBERSHIP VERIFICATION PAGE</h3>
+<div class="container pb-4">
+	<h4 class="text-center p-3">KYUCSA MEMBERSHIP VERIFICATION</h4>
+	<div class="d-flex justify-content-center align-items-center pt-3 pb-5">
+		<div class="card mx-auto my-auto bg-light pb-5" style="width:400px">
+		<div class="card-body">
+		  <form action="" class="was-validated">
+			<div class="form-group">
+				<label for="kyucsa_id" class="font-weight-bold">KYUCSA ID:</label>
+				<input type="text" class="form-control" id="kyucsaid" placeholder="Enter KYUCSA ID" name="kyucsa_id" required>
+				<div class="valid-feedback">Valid.</div>
+				<div class="invalid-feedback">Please fill out this field.</div>
+			</div>
+			<div class="pb-3">
+				<button type="submit" class="btn btn-success font-weight-bold d-block mx-auto">Verify</button>
+			</div>
+			<div class="">
+			   <span class="text-muted">If you don't have kyucsa ID, SignUp <a href="{% url 'signup' %}">here.</a></span>
+			</div>
+		 </form>
+	
+		</div>
+	  </div>
+	</div>
 </div>
 {%endblock%}

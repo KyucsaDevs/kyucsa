@@ -2,6 +2,54 @@
 {% load static %}
 {% block content %}
 <div class="container">
-	<h1 class="text-center">GALLERY PAGE</h1>
+	<main id="mai">
+
+        <!-- ======= Team Section ======= -->
+        <section id="team">
+            <div class="container" data-aos="fade-up">
+                <div class="section-header">
+                    <h3 class="section-title">Photos <strong class="text-primary">preserve</strong> memories.</h3>
+                    <p class="section-description">Real people, captured. Photography has the power to reflect the world around us, give voice to individuals and groups within our communities — and most importantly — tell their story.</p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card member" data-aos="fade-up" data-aos-delay="200">
+                            <img class="card-img-top" src="{% static './images/gallery/chris.jpg' %}" alt="christopher">
+                            <div class="card-body">
+                            <span>Web Lead</span>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card member" data-aos="fade-up" data-aos-delay="200">
+                            <img class="card-img-top" src="{% static './images/gallery/jonathan.jpg' %}" alt="jonathan">
+                            <div class="card-body">
+                            <span>President</span>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card member" data-aos="fade-up" data-aos-delay="200">
+                            <img class="card-img-top" src="{% static './images/gallery/avatar.png' %}" alt="default">
+                            <div class="card-body">
+                            <span>Avatar</span>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card member" data-aos="fade-up" data-aos-delay="200">
+                            <img class="card-img-top" src="{% static './images/gallery/avatar.png' %}" alt="default">
+                            <div class="card-body">
+                            <span>Avatar</span>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End Team Section -->
+
+
+    </main><!-- End #main -->
 </div>
 {%endblock%}
