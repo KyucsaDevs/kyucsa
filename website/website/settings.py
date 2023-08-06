@@ -77,12 +77,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-        #'NAME': env('DATABASE_NAME'),
-        #'NAME': env('DATABASE_NAME'),
-        #'USER': env('DATABASE_USER'),
-        #'PASSWORD': env('DATABASE_PASSWORD'),
-        #'HOST': env('DATABASE_HOST'),
-        #'PORT': env('DATABASE_PORT', cast=int),
+        'NAME': env('DATABASE_NAME'),
+        'NAME': env('DATABASE_NAME'),
+        'USER': env('DATABASE_USER'),
+        'PASSWORD': env('DATABASE_PASSWORD'),
+        'HOST': env('DATABASE_HOST'),
+        'PORT': env('DATABASE_PORT', cast=int),
     }
 }
 
@@ -111,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 
@@ -128,3 +128,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR,'kyucsa/static'),]
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+#Media Root Directories and URL
+MEDIA_ROOT = BASE_DIR/'kyucsa/static/images'
+MEDIA_URL = '/kyucsa/static/images/'

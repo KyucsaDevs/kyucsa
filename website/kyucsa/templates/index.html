@@ -134,10 +134,9 @@
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="owl-carousel owl-theme partners-carousel">
-								<div class="boxs"><a href="https://kyucsa.kyu.ac.ug/" target="_blank"><img alt="client logo" class="partners-logo" src="{% static '/images/partners/kyucsa.png' %}"></a></div>
-								<div class="boxs"><a href="https://gdsc.community.dev/kyambogo-university/" target="_blank"><img alt="client logo" class="partners-logo" src="{% static '/images/partners/gdsc.png' %}"></a></div>
-								<div class="boxs"><a href="https://www.ieee.org/" target="_blank"><img alt="client logo" class="partners-logo" src="{% static '/images/partners/ieee.png' %}"></a></div>
-								<div class="boxs"><a href="https://www.computer.org/" target="_blank"><img alt="client logo" class="partners-logo" src="{% static '/images/partners/ieeecs.png' %}"></a></div>
+								{% for logo in logos %}
+								<div class="boxs"><a href="{{ logo.pwebsite }}" target="_blank"><img alt="{{ logo.pname }}" class="partners-logo" src="{{ logo.plogo.url }}"></a></div>
+								{% endfor %}
 							</div>
 						</div>
 					</div>

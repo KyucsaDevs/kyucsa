@@ -1,8 +1,14 @@
 from django.shortcuts import render
+from .models import Partners
 
 def index(request):
 	title="Home"
-	return render(request, 'index.html', {'title': title})
+	logos = Partners.objects.all()
+	context = {
+        'logos': logos,
+		'title': title
+    }
+	return render(request, 'index.html', context)
 
 def technologies(request):
 	title="Technologies"
