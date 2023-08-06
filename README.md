@@ -1,6 +1,6 @@
 <h1 align="center">KYUCSA</h1>
 <h3 align="center">Kyambogo University Computing Students Association</h3>
-<img width="940" alt="homepage" src="https://github.com/kyucsa-kyambogo/kyucsa/assets/117981104/5ba32a94-1b2e-423f-a28d-98b940ad218c">
+<img width="937" alt="homepage ui" src="https://github.com/kyucsa-kyambogo/kyucsa/assets/117981104/27c6977e-c19f-402c-b7bb-21fb781d555f">
 <br>
 <h3 align="center">Welcome to the kyucsa website repository!</h3>
 
