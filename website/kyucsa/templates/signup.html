@@ -3,5 +3,137 @@
 {% block content %}
 <div class="container">
 	<h3 class="text-center">MEMBERSHIP REGISTRATION PAGE</h3>
+	<!DOCTYPE html>
+	<html>
+
+	<head>
+		<title>Student Signup Form</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		<style>
+			/* styles.css */
+
+			body {
+				background-color: #f0f0f0;
+			}
+
+			.container {
+				max-width: 600px;
+				margin: 0 auto;
+				padding: 20px;
+				background-color: white;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+				border-radius: 40px;
+				align-content: center;
+				border-color: rgb(0, 0, 0);
+			}
+
+			.btn-primary {
+				background-color: blue;
+				border-color: black;
+				border-radius: 50%;
+			}
+
+			.form-check-label {
+				color: black;
+			}
+
+			.form-control,
+			.form-check-input {
+				background-color: white;
+				color: black;
+			}
+
+			.form-check-input:checked {
+				background-color: black;
+				color: white;
+			}
+
+			p {
+				color: black;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+			<form>
+				<div class="form-group">
+					<label for="full_name">Full Names:</label>
+					<input type="text" class="form-control" id="full_name" name="full_name" required>
+				</div>
+
+				<div class="form-group">
+					<label for="email">Enter Email Address:</label>
+					<input type="email" class="form-control" id="email" name="email" required>
+				</div>
+
+				<div class="form-group">
+					<label for="student_number">Student's Number:</label>
+					<input type="text" class="form-control" id="student_number" name="student_number" required>
+				</div>
+
+				<div class="form-group">
+					<label for="program_of_study">Program of Study:</label>
+					<select class="form-control" id="program_of_study" name="program_of_study" required>
+						<option value="" disabled selected>Select Program</option>
+						<option value="Computer Science">BITC</option>
+						<option value="Computer Science">BIS</option>
+						<option value="Computer Science">BLIS</option>
+						<option value="Computer Science">DCS</option>
+						<!-- Add more options as needed -->
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="year_of_enrollment">Select Year of Enrollment:</label>
+					<select class="form-control" id="year_of_enrollment" name="year_of_enrollment" required>
+						<option value="" disabled selected>Select Year</option>
+						<option value="2023">2023</option>
+						<option value="2022">2022</option>
+						<option value="2023">2021</option>
+						<option value="2022">2020</option>
+						<option value="2023">2019</option>
+						<option value="2022">2018</option>
+						<option value="2023">2017</option>
+						<option value="2022">2016</option>
+						<option value="2023">2015</option>
+						<option value="2022">2014</option>
+						<!-- Add more options as needed -->
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="gender">Select Gender:</label>
+					<select class="form-control" id="gender" name="gender" required>
+						<option value="" disabled selected>Select Gender</option>
+						<option value="male">Male</option>
+						<option value="female">Female</option>
+						<option value="other">Other</option>
+						<!-- Add more options as needed -->
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label>Status:</label>
+					<div class="form-check">
+						<input type="radio" class="form-check-input" name="status" id="continuing" value="continuing"
+							required>
+						<label class="form-check-label" for="continuing">Continuing</label>
+					</div>
+					<div class="form-check">
+						<input type="radio" class="form-check-input" name="status" id="alumni" value="alumni" required>
+						<label class="form-check-label" for="alumni">Alumni</label>
+					</div>
+				</div>
+
+				<button type="submit" class="btn btn-primary btn-sm">Register</button>
+			</form>
+
+			<p class="text-center mt-3">Already registered?! <a href="{% url 'verify' %}">Verify</a></p>
+		</div>
+	</body>
+
+	</html>
+
 </div>
 {%endblock%}
