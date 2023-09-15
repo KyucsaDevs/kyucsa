@@ -1,11 +1,13 @@
 from django.shortcuts import render
-from .models import Partners
+from .models import Partners,Gallery,Patron
 
 def index(request):
 	title="Home"
+	patrons = Patron.objects.all()
 	logos = Partners.objects.all()
 	context = {
         'logos': logos,
+		'patrons': patrons,
 		'title': title
     }
 	return render(request, 'index.html', context)
@@ -24,7 +26,12 @@ def team(request):
 
 def gallery(request):
 	title="Gallery"
-	return render(request, 'gallery.html',{'title': title})
+	gallery = Gallery.objects.all()
+	context = {
+        'gallery': gallery,
+		'title': title
+    }
+	return render(request, 'gallery.html',context)
 
 def verify(request):
 	title="Membership Verification"
