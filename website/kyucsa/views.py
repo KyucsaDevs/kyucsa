@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail
+from .forms import StudentRegistrationForm
 from .models import Partners,Gallery,Patron
 
 def index(request):
@@ -39,4 +41,19 @@ def verify(request):
 
 def membership(request):
 	title="SignUp"
-	return render(request, 'signup.html', {'title': title})
+	form = StudentRegistrationForm(request.POST)
+	context = {
+        'form': form,
+		'title': title
+    }
+	def student_registration_view(request):
+		if request.method == 'POST':
+			form = StudentRegistrationForm(request.POST)
+			if form.is_valid():
+				student = form.save()
+				# Send registration ID via email
+				send_registration_email(student.registration_id, student.email)
+				return redirect('success')  # Replace 'success' with your success page URL
+		else:
+			form = StudentRegistrationForm()
+	return render(request, 'signup.html', context)

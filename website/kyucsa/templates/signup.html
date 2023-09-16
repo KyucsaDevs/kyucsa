@@ -1,7 +1,21 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<div class="container">
-	<h3 class="text-center">MEMBERSHIP REGISTRATION PAGE</h3>
+<div class="container pb-5">
+	<h3 class="text-center pt-5">Register to be a member</h3>
+	<!--SignUp Card-->
+	<div class="register d-flex align-items-center justify-content-center">
+		<div class="card rounded-0" style="width:450px">
+			<div class="card-header bg-info text-light font-weight-bold">SignUp</div>
+			<div class="card-body">
+				<form method="post">
+					{% csrf_token %}
+					{{ form.as_p }}
+					<button type="submit">Register</button>
+				</form>
+			</div>
+			<span class="text-muted m-3">Already Registered? <a href="{% url 'verify' %}">Verify ID</a></span>
+		</div>
+	</div>
 </div>
 {%endblock%}

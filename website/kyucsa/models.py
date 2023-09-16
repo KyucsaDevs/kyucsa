@@ -1,6 +1,22 @@
 from django.db import models
 from django.utils import timezone
 from datetime import datetime
+#Student Modals
+class Student(models.Model):
+    kyucsa_id = models.CharField(max_length=10, unique=True)
+    student_no = models.CharField(max_length=15, unique=True)
+    firstName = models.CharField(max_length=50, blank=False)
+    lastName = models.CharField(max_length=50)
+    email = models.EmailField(max_length=100)
+    program = models.CharField(max_length=30)
+    enrollment = models.DateField(max_length=30)
+    gender = models.CharField(max_length=30)
+    status = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.firstName + " " + self.lastName
+
+
 #Model for Partners Logo
 class Partners(models.Model):
   pname = models.CharField(max_length=50, unique=True)
