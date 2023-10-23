@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import Partners,Gallery,Patron,Team,Events
+from .models import Partner,Gallery,Patron,Team,Event
 # Models registration.
 
-class PartnersAdmin(admin.ModelAdmin):
+class PartnerAdmin(admin.ModelAdmin):
   ordering = ["id"]
   list_display = ("pname", "pwebsite", "plogo")
 class GalleryAdmin(admin.ModelAdmin):
@@ -15,15 +15,16 @@ class PatronAdmin(admin.ModelAdmin):
         return f"Edit Details"
   Avater.short_description = 'Editing'
   Avater.allow_tags = True
+class EventAdmin(admin.ModelAdmin):
+   ordering = ["id"]
+   list_display = ["etitle", "etopic", "estatus", "eurl", "edate", "ebanner", "eslide"]
 
-#class TeamAdmin(admin.ModelAdmin):
-#  list_display = ["tfullname", "tposition", "taccademicyear", "tgithub", "tlinkedlin", "ttwitter", "tprofilepicture"]
-#class EventAdmin(admin.ModelAdmin):
-#  list_display = ["etitle", "etopic", "estatus", "eurl", "edate", "ebanner"]
-
+class TeamAdmin(admin.ModelAdmin):
+  ordering = ["id"]
+  list_display = ["tname", "tpost", "taccademicyear", "tgithub", "tlinkedin", "ttwitter", "tphoto"]
   
-admin.site.register(Partners, PartnersAdmin)
+admin.site.register(Partner, PartnerAdmin)
 admin.site.register(Gallery, GalleryAdmin)
 admin.site.register(Patron, PatronAdmin)
-#admin.site.register(Team, TeamAdmin)
-#admin.site.register(Events, EventAdmin)
+admin.site.register(Event, EventAdmin)
+admin.site.register(Team, TeamAdmin)

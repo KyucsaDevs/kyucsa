@@ -13,162 +13,43 @@
                     <div class="d-flex justify-content-center">
                         <ul id="portfolio-flters">
                             <li date-fileter="*" class="filter-all">All</li>
-                            <li data-filter=".filter-live">Live</li>
-                            <li data-filter=".filter-new">Upcoming Events</li>
-                            <li data-filter=".filter-past">Past Events</li>
+                            <li data-filter=".live">Live</li>
+                            <li data-filter=".upcoming">Upcoming Events</li>
+                            <li data-filter=".past">Past Events</li>
 
                         </ul>
                     </div>
                 </div>
 
                 <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
-
-
-                    <!-- UPCOMING EVENTS  -->
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-new" id="next">
-                        <a href="{% static './images/assets/events/againstallodds.jpg' %}" data-gallery="portfolioGallery"
-                            class="portfolio-lightbox preview-link"
-                            title="KYUCSA WORKSHOPS">
-
-                            <img src="{% static '/images/assets/events/againstallodds.jpg' %}" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Against All Odds</h4>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <p>Tech Talk</p>
-                                    </div>
-                                    <div class="col-6 ">
-                                        <p class="text-dark fw-bold">12th Nov, 2022</p>
-                                    </div>
-                                </div>
-
-                                <i class="bx bx-plus"></i>
+                    <!--EVENTS  -->
+                    <!--Model Data-->
+                    {% for event in events %}
+                    <div class="col-lg-4 col-md-6 portfolio-item {{ event.estatus }}" id="next">
+                    <div class="card">
+                        <img class="card-img-top" src="{{ event.ebanner.url}}" alt="{{ event.etitle }}" style="width:100%">
+                        <div class="card-body card-img-overlay bg-primary portfolio-info" style="margin-top: 8rem;">
+                          <div class="row">
+                            <div class="col-6">
+                                <h4 class="fw-bold">{{ event.etitle }}</h4>
                             </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-new">
-                        <a href="{% static './images/assets/events/embracingCloud.jpg' %}" data-gallery="portfolioGallery"
-                            class="portfolio-lightbox preview-link" title="CLOUD COMPUTING">
-                            <img src="{% static './images/assets/events/embracingCloud.jpg' %}" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Embracing Cloud Technologies</h4>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <p>Cloud Computing</p>
-                                    </div>
-                                    <div class="col-6 ">
-                                        <p class="text-dark fw-bold">26th Nov, 2022</p>
-                                    </div>
-                                </div>
-                                <i class="bx bx-plus"></i>
-
+                           <div class="col-6 ">
+                           <p class="text-dark fw-bold">{{ event.edate }}</p>
+                           </div>
+                         </div>
+                         <div class="row">
+                            <div class="col-6">
+                             <p>{{ event.etopic }}</p>
                             </div>
-                        </a>
+                           <div class="col-6 ">
+                            <a href="{{ event.eslide.url }}" class="text-light">Get Slide</a>
+                           </div>
+                         </div>
+                        </div>
+                      </div>
+                      {% endfor %}
                     </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-new">
-                        <a href="{% static './images/assets/events/exploreGis.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"
-                            title="KYUCSA WORKSHOPS">
-                            <img src="{% static './images/assets/events/exploreGis.jpg' %}" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Explore GIS</h4>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <p>GIS</p>
-                                    </div>
-                                    <div class="col-6 ">
-                                        <p class="text-dark fw-bold">18th Nov, 2022</p>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </a>
-
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-new">
-                        <a href="{% static './images/assets/events/devfest2022.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"
-                            title="KYUCSA WORKSHOPS">
-                            <img src="{% static './images/assets/events/devfest2022.jpg' %}" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Google 2022 Devfest</h4>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <p>Dev Meetup</p>
-                                    </div>
-                                    <div class="col-6 ">
-                                        <p class="text-dark fw-bold">3rd Dec, 2022</p>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </a>
-
-                    </div>
-
-                    <!-- UPCOMING EVENTS  -->
-
-
-                    <!-- PAST EVENTS -->
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-past">
-                        <a href="{% static './images/assets/events/productdesign.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"
-                            title="PRODUCT DESIGN">
-                            <img src="{% static './images/assets/events/productdesign.jpg' %}" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Product Design</h4>
-                                <p>UI / UX </p>
-                                <i class="bx bx-plus"></i>
-
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-past">
-                        <a href="{% static './images/assets/events/pythontalk.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"
-                            title="KYUCSA WORKSHOPS">
-                            <img src="{% static './images/assets/events/pythontalk.jpg' %}" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Building Your Career</h4>
-                                <p>Tech Talk</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-past">
-                        <a href="{% static './images/assets/events/techcareers0.jpg' %}" data-gallery="portfolioGallery"
-                            class="portfolio-lightbox preview-link" title="KYUCSA WORKSHOPS">
-                            <img src="{% static './images/assets/events/techcareers0.jpg' %}" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Programming Fundamentals</h4>
-                                <p>PYTHON</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-past">
-                        <a href="{% static './images/assets/events/fruitpunch.jpg' %}" data-gallery="portfolioGallery"
-                            class="portfolio-lightbox preview-link" title="KYUCSA WORKSHOPS">
-                            <img src="{% static './images/assets/events/fruitpunch.jpg' %}" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>AI for Good</h4>
-                                <p>Application of AI</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-past">
-                        <a href="{% static './images/assets/events/techcareers0.jpg' %}" data-gallery="portfolioGallery"
-                            class="portfolio-lightbox preview-link" title="KYUCSA WORKSHOPS">
-                            <img src="{% static './images/assets/events/webdev.jpg' %}" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Web Development</h4>
-                                <p>HTML, CSS & JS</p>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- PAST EVENTS  -->
-
+                    <!--Model Data End-->
                 </div>
 
             </div>

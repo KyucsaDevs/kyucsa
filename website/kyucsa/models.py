@@ -18,7 +18,7 @@ class Student(models.Model):
 
 
 #Model for Partners Logo
-class Partners(models.Model):
+class Partner(models.Model):
   pname = models.CharField(max_length=50, unique=True)
   pwebsite = models.CharField(max_length=200, unique=True)
   plogo = models.ImageField(upload_to='partners/', null=True)
@@ -43,29 +43,30 @@ class Patron(models.Model):
 
 #Model for Team
 class Team(models.Model):
-  tprofilepicture = models.ImageField(upload_to='team/' ,null=True)
-  tfullname = models.CharField(max_length=100)
-  tposition = models.CharField(max_length=50)
-  tlinkedin = models.CharField(max_length=20)
-  ttwitter = models.CharField(max_length=20)
-  tgithub = models.CharField(max_length=20)
+  tphoto = models.ImageField(upload_to='team/' ,default='team/avatar.png',null=True)
+  tname = models.CharField(max_length=100)
+  tpost = models.CharField(max_length=50)
+  ttwitter = models.CharField(max_length=20, null=True)
+  tgithub = models.CharField(max_length=20, null=True)
+  tlinkedin = models.CharField(max_length=20, null=True)
   taccademicyear = models.CharField(max_length=10, unique=True)
   def __str__(self):
-    return f"{self.tfullname} {self.tposition} {self.taccademicyear} {self.tgithub} {self.tlinkedin} {self.ttwitter} {self.tprofilepicture}"
+    return f"{self.tname} {self.tpost} {self.taccademicyear} {self.tgithub} {self.tlinkedin} {self.ttwitter} {self.tphoto}"
 
 #Model for Events
-class Events(models.Model):
+class Event(models.Model):
   etitle = models.CharField(max_length=200)
   etopic = models.CharField(max_length=100)
   ebanner = models.ImageField(upload_to='events/' ,null=True)
+  eslide = models.FileField(upload_to='eslides/' ,null=True)
   estatus = models.CharField(max_length=30)
   eurl = models.URLField(max_length=255)
   edate = models.DateField(default=timezone.now)
   def __str__(self):
-    return f"{self.etitle} {self.etopic} {self.estatus} {self.eurl} {self.edate} {self.ebanner}"
+    return f"{self.etitle} {self.etopic} {self.estatus} {self.eurl} {self.edate} {self.ebanner} {self.eslide}"
 
 #Model for Members
-class Members(models.Model):
+class Member(models.Model):
   etitle = models.CharField(max_length=200)
   etopic = models.CharField(max_length=100)
   ebanner = models.ImageField(upload_to='events/' ,null=True)

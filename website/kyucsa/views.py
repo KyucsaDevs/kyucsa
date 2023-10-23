@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from .forms import StudentRegistrationForm
-from .models import Partners,Gallery,Patron
+from .models import Partner,Gallery,Patron,Event,Team
 
 def index(request):
 	title="Home"
 	patrons = Patron.objects.all()
-	logos = Partners.objects.all()
+	logos = Partner.objects.all()
 	context = {
         'logos': logos,
 		'patrons': patrons,
@@ -20,11 +20,21 @@ def technologies(request):
 
 def events(request):
 	title="Events"
-	return render(request, 'events.html', {'title': title})
+	events = Event.objects.all()
+	context = {
+        'events': events,
+		'title': title
+    }
+	return render(request, 'events.html', context)
 
 def team(request):
 	title="Team"
-	return render(request, 'team.html', {'title': title})
+	teams = Team.objects.all()
+	context = {
+        'teams': teams,
+		'title': title
+    }
+	return render(request, 'team.html', context)
 
 def gallery(request):
 	title="Gallery"
