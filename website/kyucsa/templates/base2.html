@@ -11,12 +11,9 @@
 
   <!--Loading styles, icons and static files-->
   {% load static %}
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
+   <!-- Favicons -->
   <link rel="icon" type="image/x-icon" href="{% static '/images/favicon.ico' %}">
   <link rel="icon" href="{% static '/images/icon.png' %}" type="image/png">
-  <link rel="stylesheet" href="{% static './css/owl.carousel.min.css' %}">
-  <!-- Favicons -->
   <link href="{% static '/images/logo.png' %}" rel="icon">
   <link href="{% static './assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
   <!--Font Awesome Icons-->
@@ -24,17 +21,17 @@
       integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
   <!-- Vendor CSS Files -->
   <link href="{% static './vendor/aos/aos.css' %}" rel="stylesheet">
-  <link href="{% static './vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
   <link href="{% static './vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
   <link href="{% static './vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
   <link href="{% static './vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
   <!--Owl Carousal Styles-->
+  <link rel="stylesheet" href="{% static './css/owl.carousel.min.css' %}">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" rel="stylesheet">
-  <!-- Template Main CSS File -->
-  <link rel="stylesheet" href="{% static './css/custom-tm.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- extra css  -->
+  <link rel="stylesheet" href="{% static './css/custom-tm.css' %}">
   <link rel="stylesheet" href="{% static './css/styles.css' %}">
   <style>
     .step {
@@ -185,24 +182,22 @@ $(document).ready(function(){
   });
 });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="{% static './js/vendors/swiper.min.js' %}"></script>
-<script src="{% static './js/vendors/owl.carousel.min.js' %}"></script>
-<script src="{% static './js/vendors/hammer.js' %}"></script>
-<script src="{% static './js/custom.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 <!-- Vendor JS Files -->
 <script src="{% static './vendor/purecounter/purecounter.js' %}"></script>
 <script src="{% static './vendor/aos/aos.js' %}"></script>
 <script src="{% static './vendor/glightbox/js/glightbox.min.js' %}"></script>
 <script src="{% static './vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
-<script src="{% static './vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static './js/vendors/hammer.js' %}"></script>
+
 <!-- Template Main JS File -->
 <script src="{% static './main-js.js' %}"></script>
+
 <!--Partners Logo Carousal Scripts-->
+<script src="{% static './js/vendors/owl.carousel.min.js' %}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <!--end of scripts-->
 

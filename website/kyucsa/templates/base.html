@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#f8f9fa"/>
     <meta name="author" content="KYUCSA">
     <meta name="description" content="Kyambogo University Computing Students Association, a community for university students to learn mobile, web development, and various tech skills.">
@@ -17,7 +18,8 @@
     <link href="{% static '/images/logo.png' %}" rel="icon">
     <link href="{% static './assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
     <!--Font Awesome Icons-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+        integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <!-- Vendor CSS Files -->
     <link href="{% static './vendor/aos/aos.css' %}" rel="stylesheet">
     <link href="{% static './vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
@@ -28,6 +30,12 @@
     <link href="{% static './css/custom-tm.css' %}" rel="stylesheet">
     <!-- extra css  -->
     <link rel="stylesheet" href="{% static './css/styles.css' %}">
+    <!--DNS Fetch-->
+    <link rel="dns-prefetch" href="https://docs.google.com">
+    <!--Owl Carousal Styles-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" rel="stylesheet">
     <style>
       .step {
           display: none;
@@ -38,79 +46,105 @@
     </style>
 </head>
 <body>
-  <div class="container-fluid bg-light">
-    <!--Top Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom sticky-top">
-      <div class="container">
-        <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static '/images/logo.png' %}" height="50" alt="Logo"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+  <!--Top Navbar-->
+  <nav class="navbar navbar-expand-sm bg-light navbar-light sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static '/images/logo.png' %}" height="45"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
           <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'index' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'technologies' %}">Technologies</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'events' %}">Events</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'team' %}">Team</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'gallery' %}">Gallery</a>
+              </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'index' %}">Home</a>
+                <a class="nav-link" href="{% url 'verify' %}">Verify</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'technologies' %}">Technologies</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'events' %}">Events</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'team' %}">Team</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'gallery' %}">Gallery</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'verify' %}">Verify</a>
-            </li>
-            <li class="nav-item">
-              <a class="btn btn-success font-weight-bold" href="{% url 'signup' %}">SIGN UP</a>
+                <a class="btn btn-success font-weight-bold" href="{% url 'signup' %}">SIGN UP</a>
             </li> 
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!--end of navbar-->
-    
-    {% block content %}
-    {% endblock %}
-    
-    <!--Footer-->
-    <div class="container pt-5">
-      <div class="row">
-        <div class="col-md-4">
-          <h3>Column 1</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.</p>
-        </div>
-        <div class="col-md-4">
-          <h3>Column 2</h3>
-          <p>Email: info@example.com<br>Follow us on social media:<br>
-            <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">Instagram</a>
-          </p>
-        </div>
-        <div class="col-md-4">
-          <h3>Column 3</h3>
-          <p>123 Main Street<br>City, State, ZIP<br>Phone: (123) 456-7890</p>
-        </div>
+            </ul>
       </div>
     </div>
-    <!--Footer End-->
-    
-    <nav class="navbar navbar-expand justify-content-center align-items-center p-1 bg-light fixed-bottom">
-      <ul class="navbar-nav text-center">
+  </nav>
+  <!--end of navbar-->
+  <div class="container-fluid mt-1">
+    {% block content %}
+    {% endblock %}
+    <!--Footer-->
+    <!--Footer Map-->
+      <div class="container pt-5">
+          <div class="row">
+              <div class="col-md-3">
+                  <h3 class="text-secondary">About Us</h3>
+                  <p>We aim at helping university students learn various skills in Tech such as mobile and web development, 
+                    design thinking, Networking & System Adminstration, leadership skills and much more.</p>
+              </div>
+
+              <div class="col-md-3">
+                  <h3 class="text-secondary">Get In Touch</h3>
+                  <span>School of Computing & Information Science,</span><br><span>Kyambogo University,</span><br>Kampala - Uganda<h6 class="text-primary">Follow our socials:</h6></p>
+                  <div class="social">
+                    <a href="https://twitter.com/{{ team.ttwitter }}/" target="_blank"><i class="bi bi-twitter"></i></a> &nbsp;&nbsp;&nbsp;
+                    <a href="https://github.com/{{ team.tgithub }}/" target="_blank"><i class="bi bi-github"></i></a> &nbsp;&nbsp;&nbsp;
+                    <a href="https://www.linkedin.com/in/{{ team.tlinkedin}}/" target="_blank"><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                  <h3 class="text-secondary">Quick Links</h3>
+                    <div class="menu-services-container">
+                        <ul id="menu-services-menu" class="menu">
+                            <li class="menu-item"><a href="#">Home</a></li>
+                            <li class="menu-item"><a href="#">Technologies</a></li>
+                            <li class="menu-item"><a href="#">Events</a></li>
+                            <li class="menu-item"><a href="#">Gallery</a></li>
+                            <li class="menu-item"><a href="#">Executives</a></li>
+                            <li class="menu-item"><a href="#">Elections</a></li>
+                        </ul>
+                    </div>
+              </div>
+
+              <div class="col-md-3">
+                <h3 class="text-secondary">Useful Links</h3>
+                <p>123 Main Street<br>City, State, ZIP<br>Phone: (123) 456-7890<br>Coming Soon</p>
+            </div>
+          </div>
+       </div>
+    <!--Footer Map End-->
+    <nav class="navbar navbar-expand justify-content-center align-items-center pb-4 sticky-top">
+        <ul class="navbar-nav text-center">
         <li class="nav-item">
-          <small>&copy; <script>document.write(new Date().getFullYear());</script> KYUCSA&reg; All rights Reserved</small>
-          <br><span><small>Kyambogo University Computing Students Association</small></span>
+            <small>&copy; <script>document.write(new Date().getFullYear());</script> KYUCSA&reg;  All rights Reserved</small>
+            <br><span><small>Kyambogo University Computing Students Association</small></span>
         </li>
-      </ul>
+        </ul>
     </nav>
     <!--Footer End-->
-  </div>
+    <!--Back to top-->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+</div>
   <!--Scripts-->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
   <script>
     function imageIntersectionObserverCallback(imageEntries, observer) {
         imageEntries.forEach(imgEntry => {
@@ -126,57 +160,64 @@
     document.querySelectorAll('img[data-src]').forEach(img => {
         imageObserver.observe(img);
     })
-  </script>
-  <script>
-    // Owl-Carousel Script
+</script>
+
+<script>
+    //Owl-Carousal Script
     $(document).ready(function(){
       $('.partners-carousel').owlCarousel({
         autoplay: true,
-        loop: true,
-        margin: 15,
-        dots: false,
-        slideTransition: 'linear',
-        autoplayTimeout: 4500,
-        autoplayHoverPause: true,
-        autoplaySpeed: 4500,
-        responsive: {
-          0: {
-            items: 2
-          },
-          500: {
-            items: 3
-          },
-          600: {
-            items: 4
-          },
-          800: {
-            items: 4
-          },
-          1200: {
-            items: 4
-          }
-        }
+       loop: true,
+       margin: 15,
+       dots: false,
+       slideTransition: 'linear',
+       autoplayTimeout: 4500,
+       autoplayHoverPause: true,
+       autoplaySpeed: 4500,
+       responsive: {
+         0: {
+           items: 2
+         },
+         500: {
+           items: 3
+         },
+         600: {
+           items: 4
+         },
+         800: {
+           items: 4
+         },
+         1200: {
+           items: 4
+         }
+
+       }
       });
     });
-  </script>
-  <script src="{% static './js/vendors/pace.js' %}"></script>
-  <script src="{% static './js/vendors/jquery.min.js' %}"></script>
-  <script src="{% static './js/vendors/jquery.magnific-popup.min.js' %}"></script>
-  <script src="{% static './js/vendors/jquery.easing.min.js' %}"></script>
-  <script src="{% static './js/vendors/swiper.min.js' %}"></script>
-  <script src="{% static './js/vendors/owl.carousel.min.js' %}"></script>
-  <script src="{% static './js/vendors/hammer.js' %}"></script>
-  <script src="{% static './js/custom.js' %}"></script>
-  <!-- Vendor JS Files -->
-  <script src="{% static './vendor/purecounter/purecounter.js' %}"></script>
-  <script src="{% static './vendor/aos/aos.js' %}"></script>
-  <script src="{% static './vendor/glightbox/js/glightbox.min.js' %}"></script>
-  <script src="{% static './vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
-  <script src="{% static './vendor/swiper/swiper-bundle.min.js' %}"></script>
-  <!-- Template Main JS File -->
-  <script src="{% static './js/main.js' %}"></script>
-  <!-- Partners Logo Carousal Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-  <!--end of scripts-->
+</script>
+
+<script src="{% static './js/vendors/pace.js' %}"></script>
+<script src="{% static './js/vendors/jquery.min.js' %}"></script>
+<script src="{% static './js/vendors/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static './js/vendors/jquery.easing.min.js' %}"></script>
+<script src="{% static './js/vendors/swiper.min.js' %}"></script>
+<script src="{% static './js/vendors/owl.carousel.min.js' %}"></script>
+<script src="{% static './js/vendors/hammer.js' %}"></script>
+<script src="{% static './js/custom.js' %}"></script>
+
+<!-- Vendor JS Files -->
+<script src="{% static './vendor/purecounter/purecounter.js' %}"></script>
+<script src="{% static './vendor/aos/aos.js' %}"></script>
+<script src="{% static './vendor/glightbox/js/glightbox.min.js' %}"></script>
+<script src="{% static './vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+<script src="{% static './vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+<!-- Template Main JS File -->
+<script src="{% static './js/main.js' %}"></script>
+
+<!--Partners Logo Carousal Scripts-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+</script>
+<!--end of scripts-->
 </body>
-</html>
+</html>    
