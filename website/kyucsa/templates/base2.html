@@ -8,11 +8,11 @@
   <meta name="description" content="Kyambogo University Computing Students Association, a community for university students to learn mobile, web development, and various tech skills.">
   <meta name="keywords" content="kyucsa, developer community, kyambogo university, computer science">
   <title>{{title }} | Spearheading ICT Innovations</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
   <!--Loading styles, icons and static files-->
   {% load static %}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <link rel="icon" type="image/x-icon" href="{% static '/images/favicon.ico' %}">
   <link rel="icon" href="{% static '/images/icon.png' %}" type="image/png">
   <link rel="stylesheet" href="{% static './css/owl.carousel.min.css' %}">
@@ -22,23 +22,18 @@
   <!--Font Awesome Icons-->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
       integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700"
-          rel="stylesheet">
   <!-- Vendor CSS Files -->
   <link href="{% static './vendor/aos/aos.css' %}" rel="stylesheet">
   <link href="{% static './vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
   <link href="{% static './vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
   <link href="{% static './vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
   <link href="{% static './vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
-  <!--DNS Fetch-->
-  <link rel="dns-prefetch" href="https://docs.google.com">
   <!--Owl Carousal Styles-->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" rel="stylesheet">
   <!-- Template Main CSS File -->
-  <link href="{% static './css/custom-tm.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static './css/custom-tm.css' %}">
   <!-- extra css  -->
   <link rel="stylesheet" href="{% static './css/styles.css' %}">
   <style>
@@ -142,6 +137,22 @@
 
 <!--Script Start-->
 <script>
+    function imageIntersectionObserverCallback(imageEntries, observer) {
+        imageEntries.forEach(imgEntry => {
+            if (imgEntry.isIntersecting) {
+                imgEntry.target.setAttribute('src', imgEntry.target.dataset.src);
+                observer.unobserve(imgEntry.target);
+            }
+        })
+    }
+    const imageObserver = new IntersectionObserver(imageIntersectionObserverCallback, { rootMargin: '20px 0px' });
+    imageObserver.POLL_INTERVAL = 200;
+    imageObserver.USE_MUTATION_OBSERVER = false;
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+    })
+</script>
+<script>
 //Owl-Carousal Script
 $(document).ready(function(){
   $('.partners-carousel').owlCarousel({
@@ -174,11 +185,11 @@ $(document).ready(function(){
   });
 });
 </script>
-<script src="{% static './js/vendors/pace.js' %}"></script>
-<script src="{% static './js/vendors/jquery.min.js' %}"></script>
-<!--script src="{% static './js/vendors/bootstrap.bundle.min.js' %}"></script-->
-<script src="{% static './js/vendors/jquery.magnific-popup.min.js' %}"></script>
-<script src="{% static './js/vendors/jquery.easing.min.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="{% static './js/vendors/swiper.min.js' %}"></script>
 <script src="{% static './js/vendors/owl.carousel.min.js' %}"></script>
 <script src="{% static './js/vendors/hammer.js' %}"></script>
