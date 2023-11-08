@@ -426,8 +426,8 @@ section {
 /* Portfolio Section
 --------------------------------*/
 #portfolio {
-  background: #f7f7f7;
-  padding: 80px 0;
+  background: #ffffff;
+  padding: 10px 0;
 }
 #portfolio #portfolio-flters {
   padding: 0;
@@ -443,14 +443,14 @@ section {
   font-size: 14px;
   font-weight: 500;
   line-height: 1;
-  color: #666666;
+  color: #0b86ea;
   margin: 0 5px 10px 5px;
   transition: all ease-in-out 0.3s;
-  background: white;
+  background: #EEEEEE;
   border-radius: 4px;
 }
 #portfolio #portfolio-flters li:hover, #portfolio #portfolio-flters li.filter-active {
-  color: #fff;
+  color: #ffffff;
   background: #2F5BE7;
 }
 #portfolio #portfolio-flters li:last-child {

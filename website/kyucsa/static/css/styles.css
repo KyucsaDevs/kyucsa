@@ -1,3 +1,11 @@
+/*Owl Carousel logo slider images styles*/
+.owl-carousel .owl-item img {
+  max-width: 100px; 
+  max-height: 70px; 
+  width: auto;
+  height: auto; 
+}
+
 
 first-letter {
   color: #557DBF;
@@ -17,17 +25,6 @@ third-letter {
 forth-letter {
   color: #189E59;
   font-weight: 400;
-}
-
-button, .btn {
-  outline: none  ;
-  border: 0  ;
-}
-
-button:focus, .btn:focus {
-  -webkit-box-shadow: none  ;
-  box-shadow: none  ;
-  outline: none  ;
 }
 
 .lead {

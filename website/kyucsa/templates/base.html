@@ -18,8 +18,7 @@
     <link href="{% static '/images/logo.png' %}" rel="icon">
     <link href="{% static './assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
     <!--Font Awesome Icons-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
-        integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <!-- Vendor CSS Files -->
     <link href="{% static './vendor/aos/aos.css' %}" rel="stylesheet">
     <link href="{% static './vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
@@ -54,7 +53,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
-          <ul class="navbar-nav">
+          <ul class="navbar-nav text-uppercase fw-bold">
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'index' %}">Home</a>
               </li>
@@ -86,7 +85,7 @@
     {% endblock %}
     <!--Footer-->
     <!--Footer Map-->
-      <div class="container pt-5">
+      <div class="container pt-2">
           <div class="row">
               <div class="col-md-3">
                   <h3 class="text-secondary">About Us</h3>
@@ -97,30 +96,36 @@
               <div class="col-md-3">
                   <h3 class="text-secondary">Get In Touch</h3>
                   <span>School of Computing & Information Science,</span><br><span>Kyambogo University,</span><br>Kampala - Uganda<h6 class="text-primary">Follow our socials:</h6></p>
-                  <div class="social">
-                    <a href="https://twitter.com/{{ team.ttwitter }}/" target="_blank"><i class="bi bi-twitter"></i></a> &nbsp;&nbsp;&nbsp;
-                    <a href="https://github.com/{{ team.tgithub }}/" target="_blank"><i class="bi bi-github"></i></a> &nbsp;&nbsp;&nbsp;
-                    <a href="https://www.linkedin.com/in/{{ team.tlinkedin}}/" target="_blank"><i class="bi bi-linkedin"></i></a>
+                  <div class="social1">
+                    <a href="https://twitter.com/{{ team.ttwitter }}/" target="_blank"><i class="bi bi-twitter" style="color: #338de1;"></i></a> &nbsp;&nbsp;&nbsp;
+                    <a href="https://github.com/{{ team.tgithub }}/" target="_blank"><i class="bi bi-github" style="color: #3d3e3e;"></i></a> &nbsp;&nbsp;&nbsp;
+                    <a href="https://github.com/{{ team.tgithub }}/" target="_blank"><i class="bi bi-youtube" style="color: #ff0000;"></i></a> &nbsp;&nbsp;&nbsp;
+                    <a href="https://www.linkedin.com/in/{{ team.tlinkedin}}/" target="_blank"><i class="bi bi-linkedin" style="color: #0066ff;"></i></a>
                 </div>
               </div>
 
               <div class="col-md-3">
                   <h3 class="text-secondary">Quick Links</h3>
-                    <div class="menu-services-container">
-                        <ul id="menu-services-menu" class="menu">
-                            <li class="menu-item"><a href="#">Home</a></li>
-                            <li class="menu-item"><a href="#">Technologies</a></li>
-                            <li class="menu-item"><a href="#">Events</a></li>
-                            <li class="menu-item"><a href="#">Gallery</a></li>
-                            <li class="menu-item"><a href="#">Executives</a></li>
-                            <li class="menu-item"><a href="#">Elections</a></li>
+                        <ul class="list-unstyled">
+                            <li class="list-item"><i class="bi-arrow-right fa-beat-fade" style="color: #48b015;"></i>&nbsp;&nbsp;<a href="{% url 'index' %}">Home</a></li>
+                            <li class="list-item"><i class="bi-arrow-right fa-beat-fade" style="color: #48b015;"></i>&nbsp;&nbsp;<a href="{% url 'technologies' %}">Technologies</a></li>
+                            <li class="list-item"><i class="bi-arrow-right fa-beat-fade" style="color: #48b015;"></i>&nbsp;&nbsp;</i><a href="{% url 'events' %}">Events</a></li>
+                            <li class="list-item"><i class="bi-arrow-right fa-beat-fade" style="color: #48b015;"></i>&nbsp;&nbsp;</i><a href="{% url 'gallery' %}">Gallery</a></li>
+                            <li class="list-item"><i class="bi-arrow-right fa-beat-fade" style="color: #48b015;"></i>&nbsp;&nbsp;</i><a href="{% url 'team' %}">Executives</a></li>
+                            <li class="list-item"><i class="bi-arrow-right fa-beat-fade" style="color: #48b015;"></i>&nbsp;&nbsp;<a href="https://amadratitus.github.io/kems/" target="_blank">Elections</a></li>
                         </ul>
-                    </div>
               </div>
 
               <div class="col-md-3">
                 <h3 class="text-secondary">Useful Links</h3>
-                <p>123 Main Street<br>City, State, ZIP<br>Phone: (123) 456-7890<br>Coming Soon</p>
+                <ul class="list-unstyled">
+                  <li class="list-item"><i class="bi-arrow-right fa-beat-fade" style="color: #48b015;"></i>&nbsp;&nbsp;<a href="https://kyu.ac.ug" target="_blank">KYU Website</a></li>
+                  <li class="list-item"><i class="bi-arrow-right fa-beat-fade" style="color: #48b015;"></i>&nbsp;&nbsp;<a href="{% url 'signup' %}">New Student Registration</a></li>
+                  <li class="list-item"><i class="bi-arrow-right fa-beat-fade" style="color: #48b015;"></i>&nbsp;&nbsp;</i><a href="{% url 'verify' %}">Membership Verification</a></li>
+                  <li class="list-item"><i class="bi-arrow-right fa-beat-fade" style="color: #48b015;"></i>&nbsp;&nbsp;</i><a href="https://gdsc.community.dev/kyambogo-university/" target="_blank">Join GDSC KYU Chapter</a></li>
+                  <li class="list-item"><i class="bi-arrow-right fa-beat-fade" style="color: #48b015;"></i>&nbsp;&nbsp;</i><a href="https://computer.org/kyambogo-university" target="_blank">Join IEEE CS KYU Chapter</a></li>
+                  <li class="list-item"><i class="bi-arrow-right fa-beat-fade" style="color: #48b015;"></i>&nbsp;&nbsp;<a href="https://amadratitus.github.io/kems/" target="_blank">Contact Developer</a></li>
+              </ul>
             </div>
           </div>
        </div>

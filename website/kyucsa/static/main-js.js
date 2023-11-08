@@ -4,18 +4,26 @@ $(document).ready(function () {
 
     $('.next-step').click(function (e) {
         e.preventDefault();
-
         // Validate the current step before proceeding
         if (currentStep === 1) {
-            const name = $('#name').val();
-            if (name === '') {
-                alert('Please enter your name.');
+            const firstName = $('#firstName').val().trim();
+            const lastName = $('#lastName').val().trim();
+            const program = $('#sel1').val();
+            const gender = $('#sel2').val();
+
+            if (firstName === '' || lastName === '' || program === 'Choose...' || gender === 'Choose...') {
+                alert('Please fill out all the fields.');
                 return;
             }
         } else if (currentStep === 2) {
-            const email = $('#email').val();
-            if (email === '') {
-                alert('Please enter your email.');
+            const academicStatus = $('#sel3').val();
+            const studentNumber = $('#stdno').val().trim();
+            const enrollmentYear = $('#sel4').val();
+            const email = $('#email').val().trim();
+            const emailRegex = /^[\w-]+(\.[\w-]+)*@gmail\.com$|^[\w-]+(\.[\w-]+)*@std\.kyu\.ac\.ug$/i;
+
+            if (academicStatus === 'Choose...' || studentNumber === '' || enrollmentYear === 'Choose...' || !email.match(emailRegex)) {
+                alert('Please fill out all the fields correctly.');
                 return;
             }
         }
@@ -50,6 +58,8 @@ $(document).ready(function () {
         $('.progress-bar').css('width', progressValue + '%').attr('aria-valuenow', progressValue).text(progressValue + '%');
     }
 });
+
+
 
 //Owl-Carousal Script
 $(document).ready(function () {

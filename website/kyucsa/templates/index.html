@@ -22,7 +22,7 @@
 										<forth-letter> leadership skills.</forth-letter>
 									</p>
 								</div>
-							</div><a href="technologies.html" class="hero-button" rel="noopener"><i
+							</div><a href="{% url 'technologies' %}" class="hero-button" rel="noopener"><i
 									class="fab fa-meetup"></i> &nbsp; Explore</a>
 						</div>
 					</div>
@@ -132,12 +132,12 @@
 			<!--Partners Logo Carousal-->
 			<div class="partners">
 				<div class="container">
-					<h2 class="text-center text-primary wow fadeInUp">Partners</h2>
+					<h2 class="text-center text-primary wow fadeInUp pb-2">Partners</h2>
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="owl-carousel owl-theme partners-carousel">
 								{% for logo in logos %}
-								<div class="boxs"><a href="{{ logo.pwebsite }}" target="_blank"><img alt="{{ logo.pname }}" class="partners-logo" src="{{ logo.plogo.url }}" width="40px"></a></div>
+								<div class="boxs"><a href="{{ logo.pwebsite }}" target="_blank"><img alt="{{ logo.pname }}" class="partners-logo rounded" src="{{ logo.plogo.url }}" width="40"></a></div>
 								{% endfor %}
 							</div>
 						</div>

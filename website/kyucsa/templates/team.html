@@ -1,34 +1,39 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<div class="container pb-4">
+<div class="container">
+	<main id="mai">
         <!-- ======= Team Section ======= -->
         <section id="team">
-            <div data-aos="fade-up">
+            <div class="container" data-aos="fade-up">
                 <div class="section-header">
-                    <h3 class="section-title">KYUCSA EXECUTIVES</h3>
+                    <h3 class="section-title"><strong class="text-primary">KYUCSA EXECUTIVES</strong></h3>
                     <p class="section-description">Get to know our team that works very hard to ensure smooth running of
                         the associations activities.</p>
                 </div>
-
+                <div class="row">
                     {% for team in teams %}
                     <div class="col-lg-3 col-md-6">
-                        <div class="card bg-light member" data-aos="fade-up" data-aos-delay="200" style="height: 20%;">
-                            <img src="{{ team.tphoto.url }}" alt="{{ team.tname }}">
+                        <div class="card member" data-aos="fade-up" data-aos-delay="200" style="width:260px">
+                            <img class="card-img-top" src="{{ team.tphoto.url }}" alt="{{ team.tname }}" style="width:100%; height:250px;">
                             <div class="card-body">
-                            <h4 class="card-title text-center">{{ team.tname }}</h4>
-                            <span>{{ team.tpost }}</span>
-                            <div class="social">
-                                <a href="https://twitter.com/{{ team.ttwitter }}/" target="_blank"><i class="bi bi-twitter"></i></a>
-                                <a href="https://github.com/{{ team.tgithub }}/" target="_blank"><i class="bi bi-github"></i></a>
-                                <a href="https://www.linkedin.com/in/{{ team.tlinkedin}}/" target="_blank"><i class="bi bi-linkedin"></i></a>
+                                <h4 class="card-title text-center">{{ team.tname }}</h4>
+                                <span>{{ team.tpost }}</span>
+                                <div class="social">
+                                    <a href="https://twitter.com/{{ team.ttwitter }}/" target="_blank"><i class="bi bi-twitter"></i></a>
+                                    <a href="https://github.com/{{ team.tgithub }}/" target="_blank"><i class="bi bi-github"></i></a>
+                                    <a href="https://www.linkedin.com/in/{{ team.tlinkedin}}/" target="_blank"><i class="bi bi-linkedin"></i></a>
+                                </div>
                             </div>
-                        </div>
-                        </div>
+                          </div>
                     </div>
                     {% endfor %}
+                </div>
 
             </div>
         </section><!-- End Team Section -->
+
+
+    </main><!-- End #main -->
 </div>
 {%endblock%}
