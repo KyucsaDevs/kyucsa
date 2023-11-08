@@ -1,5 +1,12 @@
 from django import forms
 from .models import Student
+from django.core.exceptions import ValidationError
+
+class KYUEmailField(forms.EmailField):
+    def validate(self, value):
+        super().validate(value)
+        if not value.endswith('@kyu.ac.ug'):
+            raise ValidationError('Invalid email address. Please use an email address with the domain @kyu.ac.ug.')
 
 class StudentRegistrationForm(forms.ModelForm):
     PROGRAM_CHOICES = (
@@ -26,6 +33,10 @@ class StudentRegistrationForm(forms.ModelForm):
     status = forms.ChoiceField(
         choices=STATUS_CHOICES,
         widget=forms.Select(attrs={'class': 'form-control', 'placeholder':'Program Status'}))
+    
+    email = KYUEmailField(
+        widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Enter your email'})
+    )
     
     class Meta:
         model = Student

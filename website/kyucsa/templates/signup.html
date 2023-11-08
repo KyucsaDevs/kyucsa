@@ -1,21 +1,113 @@
-{% extends "base.html" %}
+{% extends "base2.html" %}
 {% load static %}
 {% block content %}
-<div class="container pb-5">
-	<h3 class="text-center pt-5">Register to be a member</h3>
-	<!--SignUp Card-->
-	<div class="register d-flex align-items-center justify-content-center">
-		<div class="card rounded-0" style="width:450px">
-			<div class="card-header bg-info text-light font-weight-bold">SignUp</div>
-			<div class="card-body">
-				<form method="post">
-					{% csrf_token %}
-					{{ form.as_p }}
-					<button type="submit">Register</button>
-				</form>
+<div class="register d-flex align-items-center justify-content-center pt-5 pb-5">
+	<div class="card rounded" style="width:450px">
+		<div class="card-body">
+			<div class="flex p-2">
+			<img class="card-img-top mx-auto d-block " src="{% static '/images/logo.png' %}" style="width:120px;">
+		</div>
+		<div class="progress mt-3 ml-3 mr-3">
+			<div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100">33%</div>
+		</div>
+		<div class="p-2 text-align-center justify-content-center">
+			<form id="registrationForm" method="POST">
+				{% csrf_token %}
+				<!-- Step 1 -->
+				<div class="step active" data-step="1">
+					<div class="input-group mb-3 input-group-sm">
+						<div class="input-group-prepend">
+						  <span class="input-group-text">FirstName</span>
+					   </div>
+					   <input type="text" id="firstName" class="form-control rounded" placeholder="First Name" required>
+					   <i class="fa fa-user-o" aria-hidden="true"></i>
+					 </div>
+					 <div class="input-group mb-3 input-group-sm">
+						<div class="input-group-prepend">
+						  <span class="input-group-text">LastName</span>
+					   </div>
+					   <input type="text" id="lastName" class="form-control rounded" placeholder="Last Name" required>
+					 </div>
+					 <div class="input-group mb-3 input-group-sm">
+						<div class="input-group-prepend">
+						  <span class="input-group-text">Programme</span>
+					   </div>
+					   <select class="form-control rounded" id="sel1" name="programesel">
+						<option>Choose...</option>
+						<option>BITC</option>
+						<option>BIS</option>
+						<option>BLIS</option>
+					  </select>
+					 </div>
+					 <div class="input-group mb-3 input-group-sm">
+						<div class="input-group-prepend">
+						  <span class="input-group-text">Gender</span>
+					   </div>
+					   <select class="form-control rounded" id="sel2" name="gendersel">
+						<option>Choose...</option>
+						<option>MALE</option>
+						<option>FEMALE</option>
+					  </select>
+					 </div>
+					<button class="btn btn-primary next-step">Next</button>
+				</div>
+
+				<!-- Step 2 -->
+				<div class="step" data-step="2">
+					<div class="input-group mb-3 input-group-sm">
+						<div class="input-group-prepend">
+						  <span class="input-group-text">Academic Status</span>
+					   </div>
+					   <select class="form-control rounded" id="sel3" name="statussel">
+						<option>Choose...</option>
+						<option>Continuing</option>
+						<option>Graduated</option>
+					  </select>
+					 </div>
+					 <div class="input-group mb-3 input-group-sm">
+						<div class="input-group-prepend">
+						  <span class="input-group-text">Student Number</span>
+					   </div>
+					   <input type="text" id="stdno" class="form-control rounded" placeholder="Student Number eg. 2303938484" required>
+					 </div>
+					 <div class="input-group mb-3 input-group-sm">
+						<div class="input-group-prepend">
+						  <span class="input-group-text">Enrollment Year</span>
+					   </div>
+					   <select class="form-control rounded" id="sel4" name="enrollmentsel">
+						<option>Choose...</option>
+						<option>2023</option>
+						<option>2022</option>
+						<option>2021</option>
+					  </select>
+					 </div>
+					 <div class="input-group mb-3 input-group-sm">
+						<div class="input-group-prepend">
+						  <span class="input-group-text">Email</span>
+					   </div>
+					   <input type="email" class="form-control rounded" placeholder="220000838@kyu.ac.ug" id="email" required>
+					 </div>
+					<button class="btn btn-secondary prev-step mr-2">Previous</button>
+					<button class="btn btn-primary next-step">Next</button>
+				</div>
+
+				<!-- Step 3 -->
+				<div class="step" data-step="3">
+					<div class="form-check-inline mb-3 mt-3">
+						<label class="form-check-label">
+						  <input type="checkbox" class="form-check-input rounded" name="optcheckbox" value=""><span class="text-muted">By clicking on register, you agree to our Terms of Service and policy & terms</span>
+						</label>
+					  </div>
+					<button class="btn btn-secondary prev-step mr-2">Previous</button>
+					<div class="text-center text-center p-2">
+						<button type="submit" class="text-center btn btn-primary">Register</button>
+					</div>
+					<span class="text-muted m-3">Already Registered? <a href="{% url 'verify' %}">Verify ID</a></span>
+				</div>
+			</form>
 			</div>
-			<span class="text-muted m-3">Already Registered? <a href="{% url 'verify' %}">Verify ID</a></span>
 		</div>
 	</div>
 </div>
+
 {%endblock%}

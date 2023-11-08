@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base2.html" %}
 {% load static %}
 {% block content %}
 <div class="container pb-5">
@@ -8,7 +8,7 @@
 						<div class="hero-content">
 							<div class="hero-title__group">
 								<div class="hero-title">
-									<h2 class="zuri">Kyambogo University Computing<br>Students Association (KYUCSA).</h2>
+									<h4 class="zuri">Kyambogo University Computing<br>Students Association (KYUCSA).</h4>
 								</div>
 								<div class="Hero--Subtitle">
 									<p class="lead">
@@ -137,7 +137,7 @@
 						<div class="col-sm-12">
 							<div class="owl-carousel owl-theme partners-carousel">
 								{% for logo in logos %}
-								<div class="boxs"><a href="{{ logo.pwebsite }}" target="_blank"><img alt="{{ logo.pname }}" class="partners-logo" src="{{ logo.plogo.url }}"></a></div>
+								<div class="boxs"><a href="{{ logo.pwebsite }}" target="_blank"><img alt="{{ logo.pname }}" class="partners-logo" src="{{ logo.plogo.url }}" width="40px"></a></div>
 								{% endfor %}
 							</div>
 						</div>

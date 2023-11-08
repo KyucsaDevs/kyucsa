@@ -11,11 +11,11 @@
     <title>{{title }} | Spearheading ICT Innovations</title>
     <!--Loading styles, icons and static files-->
     {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="icon" type="image/x-icon" href="{% static '/images/favicon.ico' %}">
     <link rel="icon" href="{% static '/images/icon.png' %}" type="image/png">
-    <link rel="stylesheet" href="{% static './css/responsive.css' %}">
     <link rel="stylesheet" href="{% static './css/owl.carousel.min.css' %}">
-    <!--link rel="stylesheet" href="{% static './css/bootstrap.min.css' %}"-->
     <link rel="stylesheet" type="text/css" href="{% static './css/pace-theme.css' %}">
     <!-- Favicons -->
     <link href="{% static '/images/logo.png' %}" rel="icon">
@@ -28,7 +28,6 @@
             rel="stylesheet">
     <!-- Vendor CSS Files -->
     <link href="{% static './vendor/aos/aos.css' %}" rel="stylesheet">
-    <!--link href="{% static './vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet"-->
     <link href="{% static './vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
     <link href="{% static './vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
     <link href="{% static './vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
@@ -45,85 +44,92 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" rel="stylesheet">
     <!--Bootstrap 3-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script>(function (i, s, o, g, r, a, m) {
-      i['GoogleAnalyticsObject'] = r;
-      i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-      }, i[r].l = 1 * new Date();
-      a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0];
-      a.async = 1;
-      a.src = g;
-      m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-    ga('create', 'UA-124904500-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+    <style>
+      .step {
+          display: none;
+      }
+      .step.active {
+          display: block;
+      }
+    </style>
 </head>
 <body>
   <div class="container-fluid bg-light">
-    <!--Top Navbar-->
-  <nav class="navbar navbar-expand-sm text-black border-bottom sticky-top bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static '/images/logo.png' %}" height="50"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon text-primary"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'index' %}">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'technologies' %}">Technologies</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'events' %}">Events</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'team' %}">Team</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'gallery' %}">Gallery</a>
-        </li>
-      <li class="nav-item">
-          <a class="nav-link" href="{% url 'verify' %}">Verify</a>
-      </li>
-      <li class="nav-item">
-          <a class="btn btn-success font-weight-bold" href="{% url 'signup' %}">SIGN UP</a>
-      </li> 
-      </ul>
-    </div>
-  </div>
-</nav>
-<!--end of navbar-->
+          <!--Top Navbar-->
+        <nav class="navbar navbar-expand-sm text-black border-bottom sticky-top bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static '/images/logo.png' %}" height="50"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon text-primary"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'index' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'technologies' %}">Technologies</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'events' %}">Events</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'team' %}">Team</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'gallery' %}">Gallery</a>
+              </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'verify' %}">Verify</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-success font-weight-bold" href="{% url 'signup' %}">SIGN UP</a>
+            </li> 
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!--end of navbar-->
     {% block content %}
     {% endblock %}
     <!--Footer-->
     <!--Footer Map-->
-    <div class="map rounded">
-      <iframe style="border:0; width: 100%; height: 350px;"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7447192218733!2d32.6220694348877!3d0.3480198000000032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dba2ab85b6945%3A0x3410e28a61297de3!2sDepartment%20of%20Computer%20Science%20Lab!5e0!3m2!1sen!2sug!4v1666909258247!5m2!1sen!2sug"
-        frameborder="0" allowfullscreen></iframe>
-    </div>
+      <div class="container pt-5">
+          <div class="row">
+              <div class="col-md-4">
+                  <h3>Column 1</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.</p>
+              </div>
+              <div class="col-md-4">
+                  <h3>Column 2</h3>
+                  <p>Email: info@example.com<br>Follow us on social media:<br>
+                      <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">Instagram</a>
+                  </p>
+              </div>
+              <div class="col-md-4">
+                  <h3>Column 3</h3>
+                  <p>123 Main Street<br>City, State, ZIP<br>Phone: (123) 456-7890</p>
+              </div>
+          </div>
+       </div>
     <!--Footer Map End-->
-    <nav class="navbar navbar-expand justify-content-center align-items-center pt-4 pb-3">
+    <nav class="navbar navbar-expand justify-content-center align-items-center p-1 sticky-top">
       <ul class="navbar-nav text-center">
         <li class="nav-item">
           <small>&copy; <script>document.write(new Date().getFullYear());</script> KYUCSA&reg;  All rights Reserved</small>
-          <br>
-          <small>Kyambogo University Computing Students Association</small>
+          <br><span><small>Kyambogo University Computing Students Association</small></span>
         </li>
       </ul>
     </nav>
     <!--Footer End-->
   </div>
   <!--Scripts-->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script>
     function imageIntersectionObserverCallback(imageEntries, observer) {
         imageEntries.forEach(imgEntry => {
