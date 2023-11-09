@@ -81,6 +81,24 @@
   </nav>
   <!--end of navbar-->
   <div class="container-fluid mt-1">
+    <!--alert modal-->
+    {% if messages %}
+    {% for message in messages %}
+    <!-- The Modal for error messages -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog modal-sm modal-centered">
+        <div class="modal-content">
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div class="alert alert-{{message.tag}}" role="alert">
+              {{message}}
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    {% endif %}
     {% block content %}
     {% endblock %}
     <!--Footer-->
@@ -134,7 +152,8 @@
         <ul class="navbar-nav text-center">
         <li class="nav-item">
             <small>&copy; <script>document.write(new Date().getFullYear());</script> KYUCSA&reg;  All rights Reserved</small>
-            <br><span><small>Kyambogo University Computing Students Association</small></span>
+            <br><span><small>Kyambogo University Computing Students Association</small></span><br>
+            <span>Made with <span style="color: #ff0000;">&#10084;&#65030;</span> by Chris</span>
         </li>
         </ul>
     </nav>
@@ -165,6 +184,108 @@
     document.querySelectorAll('img[data-src]').forEach(img => {
         imageObserver.observe(img);
     })
+
+
+
+        $('#registrationForm').submit(function (e) {
+        e.preventDefault();
+
+        // Serialize form data
+        const formData = $(this).serialize();
+
+        // Submit form data using AJAX
+        $.ajax({
+            url: '/membership/',  // URL mapped to the Django view
+            type: 'POST',
+            data: formData,
+            success: function(response) {
+                if (response.error_messages) {
+                    // Display error messages in a Bootstrap modal
+                    $('#errorModal .modal-body').html(response.error_messages);
+                    $('#errorModal').modal('show');
+                    setTimeout(function(){
+                        $('#errorModal').modal('hide');
+                    }, 5000); // Close modal after 5 seconds
+                } else {
+                    // Display success message in a Bootstrap modal
+                    $('#myModal .modal-body').html(response.message);
+                    $('#myModal').modal('show');
+                    setTimeout(function(){
+                        $('#errorModal').modal('hide');
+                    }, 5000); // Close modal after 5 seconds
+                }
+            },
+            error: function(error) {
+                console.log('Error:', error);
+            }
+        });
+    });
+
+    $(document).ready(function () {
+    let currentStep = 1;
+    const stepCount = $('.step').length;
+
+    $('.next-step').click(function (e) {
+        e.preventDefault();
+        // Validate the current step before proceeding
+        if (currentStep === 1) {
+            const firstName = $('#firstName').val().trim();
+            const lastName = $('#lastName').val().trim();
+            const programme = $('#sel1').val();
+            const gender = $('#sel2').val();
+
+            if (firstName === '' || lastName === '' || programme === 'Choose...' || gender === 'Choose...') {
+                alert('Please fill out all the fields.');
+                return;
+            }
+        } else if (currentStep === 2) {
+            const academicStatus = $('#sel3').val();
+            const studentNumber = $('#std_no').val().trim();
+            const enrollmentYear = $('#sel4').val();
+            const email = $('#email').val().trim();
+            const emailRegex = /^[\w-]+(\.[\w-]+)*@gmail\.com$|^[\w-]+(\.[\w-]+)*@std\.kyu\.ac\.ug$/i;
+
+            if (academicStatus === 'Choose...' || studentNumber === '' || enrollmentYear === 'Choose...' || !email.match(emailRegex)) {
+                alert('Please fill out all the fields correctly.');
+                return;
+            }
+        }
+
+        // Proceed to the next step
+        if (currentStep < stepCount) {
+            $(`.step[data-step="${currentStep}"]`).removeClass('active');
+            currentStep++;
+            $(`.step[data-step="${currentStep}"]`).addClass('active');
+            updateProgressBar();
+        }
+    });
+
+    $('.prev-step').click(function (e) {
+        e.preventDefault();
+        if (currentStep > 1) {
+            $(`.step[data-step="${currentStep}"]`).removeClass('active');
+            currentStep--;
+            $(`.step[data-step="${currentStep}"]`).addClass('active');
+            updateProgressBar();
+        }
+    });
+
+    $('#registrationForm').submit(function (e) {
+        e.preventDefault();
+        // Form submission logic here
+        // Display success message in a Bootstrap modal
+                    $('#myModal').modal('show');
+                    setTimeout(function(){
+                        $('#myModal').modal('hide');
+                    }, 2000); // Close modal after 5 seconds
+        // alert('Form submitted successfully!');
+    });
+
+    function updateProgressBar() {
+        const progressValue = Math.round((currentStep / stepCount) * 100);
+        $('.progress-bar').css('width', progressValue + '%').attr('aria-valuenow', progressValue).text(progressValue + '%');
+    }
+});
 </script>
 
 <script>

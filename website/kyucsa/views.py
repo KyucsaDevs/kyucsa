@@ -1,7 +1,10 @@
+import random
 from django.shortcuts import render, redirect
+from django.http import JsonResponse
 from django.core.mail import send_mail
 from .forms import StudentRegistrationForm
-from .models import Partner,Gallery,Patron,Event,Team
+from .models import Partner,Gallery,Patron,Event,Team,Student
+from django.contrib import messages
 
 def index(request):
 	title="Home"
@@ -51,19 +54,37 @@ def verify(request):
 
 def membership(request):
 	title="SignUp"
-	form = StudentRegistrationForm(request.POST)
+	form = StudentRegistrationForm(request.POST or None)
 	context = {
         'form': form,
 		'title': title
     }
-	def student_registration_view(request):
-		if request.method == 'POST':
-			form = StudentRegistrationForm(request.POST)
-			if form.is_valid():
-				student = form.save()
-				# Send registration ID via email
-				send_registration_email(student.registration_id, student.email)
-				return redirect('success')  # Replace 'success' with your success page URL
+	if request.method == "POST":
+		if form.is_valid():
+			firstName = form.cleaned_data["firstName"]
+			lastName = form.cleaned_data["lastName"]
+			programme = form.cleaned_data["programme"]
+			gender = form.cleaned_data["gendersel"]
+			status = form.cleaned_data["status"]
+			std_no = form.cleaned_data["std_no"]
+			enrollment = form.cleaned_data["enrollment"]
+			email = form.cleaned_data["email"]
+			kyucsaId = f'kyucsa{random.randint(10000000, 99999999)}'
+            # Perform actions with validated data (e.g., save to database)
+			if firstName!="" and lastName!="" and programme!="" and gender!="" and status!="" and std_no!="" and enrollment!="" and email!="" and kyucsaId!="":
+				data = Student(kyucsa_id=kyucsaId, firstName=firstName, lastName=lastName,email=email,std_no=std_no,
+					gendersel=gender, enrollment=enrollment,status=status, programme=programme)
+				data.save()
+				# Return a JSON response indicating success with the generated random number
+				messages.success(request, "Registered successfully!")
+				return redirect('index')
+			else:
+				# Return a JSON response indicating success with the generated random number
+				messages.error(request, "Registeration failed!")
+				return redirect('membership')
 		else:
-			form = StudentRegistrationForm()
+			# Form data is not valid, return error messages
+			error_messages = form.errors.as_json()
+			response_data = {'error_messages': error_messages}
+			return JsonResponse(response_data, status=400)  # Set status code to 400 for bad request
 	return render(request, 'signup.html', context)

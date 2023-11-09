@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 class KYUEmailField(forms.EmailField):
     def validate(self, value):
         super().validate(value)
-        if not value.endswith('@kyu.ac.ug'):
+        if not value.endswith('@kstd.kyu.ac.ug'):
             raise ValidationError('Invalid email address. Please use an email address with the domain @kyu.ac.ug.')
 
 class StudentRegistrationForm(forms.ModelForm):
@@ -40,7 +40,7 @@ class StudentRegistrationForm(forms.ModelForm):
     
     class Meta:
         model = Student
-        fields = ['firstName', 'lastName', 'email', 'program', 'enrollment', 'student_no', 'gender', 'status']
+        fields = ['firstName', 'lastName', 'email', 'programme', 'enrollment', 'std_no', 'gender', 'status']
         labels = {
                 # Set label for first_name to False to hide it
                 'firstName': False, 'lastName':False, 'email':False, 'program':False,
@@ -52,6 +52,6 @@ class StudentRegistrationForm(forms.ModelForm):
         self.fields['firstName'].widget.attrs.update({'class': 'form-control', 'placeholder':'First Name'})
         self.fields['lastName'].widget.attrs.update({'class': 'form-control', 'placeholder':'Last Name'})
         self.fields['email'].widget.attrs.update({'class': 'form-control', 'placeholder':'Email'})
-        self.fields['program'].widget.attrs.update({'class': 'form-control', 'placeholder':'Study Program'})
+        self.fields['programme'].widget.attrs.update({'class': 'form-control', 'placeholder':'Study Program'})
         self.fields['enrollment'].widget.attrs.update({'class': 'form-control', 'placeholder':'Enrollment Year'})
-        self.fields['student_no'].widget.attrs.update({'class': 'form-control', 'placeholder':'Student Number'})
+        self.fields['std_no'].widget.attrs.update({'class': 'form-control', 'placeholder':'Student Number'})

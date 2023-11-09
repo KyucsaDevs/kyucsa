@@ -4,36 +4,36 @@
 <div class="register d-flex align-items-center justify-content-center pt-5 pb-5">
 	<div class="card rounded" style="width:450px">
 		<div class="card-body">
-			<h6 class="text-center text-primary p-1">Student Registration</h6>
-		<div class="flex p-2">
+			<h6 class="text-center text-primary pt-1">Student Registration</h6>
+		<div class="flex p-1">
 			<img class="card-img-top mx-auto d-block " src="{% static '/images/logo.png' %}" style="width:120px;">
 		</div>
-		<div class="progress mt-3 ml-3 mr-3">
+		<div class="progress mt-2 ml-3 mr-3">
 			<div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100">33%</div>
 		</div>
 		<div class="p-2 text-align-center justify-content-center">
-			<form id="registrationForm" method="POST">
+			<form id="registrationForm" method="POST" action = "{%url 'signup'%}">
 				{% csrf_token %}
 				<!-- Step 1 -->
 				<div class="step active" data-step="1">
 					<div class="input-group mb-3 input-group-sm">
 						<div class="input-group-prepend">
-						  <span class="input-group-text"><i class="fa-light fa-user fa-lg" style="color: #338de1;"></i>&nbsp;</span>
+						  <span class="input-group-text"><i class="fa-regular fa-user fa-xl"></i>&nbsp;</span>
 					   </div>
-					   <input type="text" id="firstName" class="form-control rounded" placeholder="First Name" required>
+					   <input type="text" id="firstName" class="form-control rounded" name="firstName" placeholder="First Name" required>
 					   <i class="fa fa-user-o" aria-hidden="true"></i>
 					 </div>
 					 <div class="input-group mb-3 input-group-sm">
 						<div class="input-group-prepend">
-						  <span class="input-group-text"><i class="fa-light fa-user fa-lg" style="color: #338de1;"></i>&nbsp;</span>
+						  <span class="input-group-text"><i class="fa-regular fa-user fa-xl"></i>&nbsp;</span>
 					   </div>
-					   <input type="text" id="lastName" class="form-control rounded" placeholder="Last Name" required>
+					   <input type="text" id="lastName" class="form-control rounded" name="lastName" placeholder="Last Name" required>
 					 </div>
 					 <div class="input-group mb-3 input-group-sm">
 						<div class="input-group-prepend">
 						  <span class="input-group-text">Programme</span>
 					   </div>
-					   <select class="form-control rounded" id="sel1" name="programesel">
+					   <select class="form-control rounded" id="sel1" name="programme">
 						<option>Choose...</option>
 						<option>BITC</option>
 						<option>BIS</option>
@@ -44,7 +44,7 @@
 						<div class="input-group-prepend">
 						  <span class="input-group-text">Gender</span>
 					   </div>
-					   <select class="form-control rounded" id="sel2" name="gendersel">
+					   <select class="form-control rounded" id="sel2" name="gender">
 						<option>Choose...</option>
 						<option>MALE</option>
 						<option>FEMALE</option>
@@ -59,7 +59,7 @@
 						<div class="input-group-prepend">
 						  <span class="input-group-text">Academic Status</span>
 					   </div>
-					   <select class="form-control rounded" id="sel3" name="statussel">
+					   <select class="form-control rounded" id="sel3" name="status">
 						<option>Choose...</option>
 						<option>Continuing</option>
 						<option>Graduated</option>
@@ -69,13 +69,13 @@
 						<div class="input-group-prepend">
 						  <span class="input-group-text">Student Number</span>
 					   </div>
-					   <input type="text" id="stdno" class="form-control rounded" placeholder="Student Number eg. 2303938484" required>
+					   <input type="text" id="std_no" class="form-control rounded" name="std_no" placeholder="Student Number eg. 2303938484" required>
 					 </div>
 					 <div class="input-group mb-3 input-group-sm">
 						<div class="input-group-prepend">
 						  <span class="input-group-text">Enrollment Year</span>
 					   </div>
-					   <select class="form-control rounded" id="sel4" name="enrollmentsel">
+					   <select class="form-control rounded" id="sel4" name="enrollment">
 						<option>Choose...</option>
 						<option>2023</option>
 						<option>2022</option>
@@ -86,7 +86,7 @@
 						<div class="input-group-prepend">
 						  <span class="input-group-text">Email</span>
 					   </div>
-					   <input type="email" class="form-control rounded" placeholder="220000838@kyu.ac.ug" id="email" required>
+					   <input type="email" class="form-control rounded" name="email" placeholder="220000838@kyu.ac.ug" id="email" required>
 					 </div>
 					<button class="btn btn-secondary prev-step mr-2">Previous</button>
 					<button class="btn btn-primary next-step">Next</button>
@@ -99,7 +99,6 @@
 						  <input type="checkbox" class="form-check-input rounded" name="optcheckbox" value=""><span class="text-muted">By clicking on register, you agree to our Terms of Service and policy & terms</span>
 						</label>
 					  </div>
-					<button class="btn btn-secondary prev-step mr-2">Previous</button>
 					<div class="text-center text-center p-2">
 						<button type="submit" class="text-center btn btn-primary">Register</button>
 					</div>
