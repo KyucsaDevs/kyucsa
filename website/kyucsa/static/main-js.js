@@ -1,36 +1,70 @@
-$('#registrationForm').submit(function (e) {
-    e.preventDefault();
+$(document).ready(function () {
+    let currentStep = 1;
+    const stepCount = $('.step').length;
 
-    // Serialize form data
-    const formData = $(this).serialize();
-
-    // Submit form data using AJAX
-    $.ajax({
-        url: '/membership/',  // URL mapped to the Django view
-        type: 'POST',
-        data: formData,
-        success: function(response) {
-            if (response.error_messages) {
-                // Display error messages in a Bootstrap modal
-                $('#errorModal .modal-body').html(response.error_messages);
-                $('#errorModal').modal('show');
-                setTimeout(function(){
-                    $('#errorModal').modal('hide');
-                }, 5000); // Close modal after 5 seconds
-            } else {
-                // Display success message in a Bootstrap modal
-                $('#myModal .modal-body').html(response.message);
-                $('#myModal').modal('show');
-                setTimeout(function(){
-                    $('#errorModal').modal('hide');
-                }, 5000); // Close modal after 5 seconds
-            }
-        },
-        error: function(error) {
-            console.log('Error:', error);
+    $('.next-step').click(function (e) {
+        e.preventDefault();
+        // Proceed to the next step
+        if (currentStep < stepCount) {
+            $(`.step[data-step="${currentStep}"]`).removeClass('active');
+            currentStep++;
+            $(`.step[data-step="${currentStep}"]`).addClass('active');
+            updateProgressBar();
         }
     });
+
+    $('.prev-step').click(function (e) {
+        e.preventDefault();
+        if (currentStep > 1) {
+            $(`.step[data-step="${currentStep}"]`).removeClass('active');
+            currentStep--;
+            $(`.step[data-step="${currentStep}"]`).addClass('active');
+            updateProgressBar();
+        }
+    });
+
+    $('#registrationForm').submit(function (e) {
+        e.preventDefault();
+        // Submit the form data using AJAX to Django views
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            success: function (response) {
+                // Check the response from Django views
+                if (response.success) {
+                     // If successful, update modal body with the message from views
+                     $('#myModal .modal-body').text(response.message);
+                     $('#myModal').modal('show');
+                     setTimeout(function(){
+                         $('#myModal').modal('hide');
+                     }, 5000); // Close modal after 5 seconds
+                } else {
+                    // If there are errors, handle them in Django views and return appropriate response
+                    console.log(response.errors); // Log errors for debugging
+                    // Optionally, display error messages to the user if needed
+                }
+            },
+            error: function (xhr, errmsg, err) {
+                // Handle AJAX errors if any
+                console.log(xhr.status + ": " + xhr.responseText); // Log errors for debugging
+                // Optionally, display error messages to the user if needed
+            }
+        });
+    });
+
+    function updateProgressBar() {
+        const progressValue = Math.round((currentStep / stepCount) * 100);
+        $('.progress-bar').css('width', progressValue + '%').attr('aria-valuenow', progressValue).text(progressValue + '%');
+    }
 });
+
+
+
+
+
+
+
 
 
 //Owl-Carousal Script

@@ -5,13 +5,16 @@
 	<div class="d-flex justify-content-center align-items-center pt-3 pb-5">
 		<div class="card mx-auto my-auto bg-light pb-5" style="width:400px">
 		<div class="card-body">
-		  <form action="" class="was-validated">
-			<div class="form-group">
-				<label for="kyucsa_id" class="font-weight-bold">KYUCSA ID:</label>
-				<input type="text" class="form-control" id="kyucsaid" placeholder="Enter KYUCSA ID" name="kyucsa_id" required>
-				<div class="valid-feedback">Valid.</div>
+		  <form id="memberVerificationForm" action="{% url 'verify' %}" class="was-validated" method="POST">
+			{% csrf_token %}
+			<div class="input-group mb-3 input-group-sm">
+				<div class="input-group-prepend">
+				  <span class="input-group-text"><i class="fa-regular bi-key fa-xl"></i>&nbsp;</span>
+			   </div>
+			   {{ form }}
+			   <div class="valid-feedback">Valid.</div>
 				<div class="invalid-feedback">Please fill out this field.</div>
-			</div>
+			 </div>
 			<div class="pb-3">
 				<button type="submit" class="btn btn-success font-weight-bold d-block mx-auto">Verify</button>
 			</div>

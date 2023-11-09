@@ -2,10 +2,24 @@ from django import forms
 from .models import Student
 from django.core.exceptions import ValidationError
 
+
+
+#memberVerification form
+class memberVerificationForm(forms.Form):
+    kyucsaId = forms.IntegerField(required=True, widget=forms.widgets.TextInput(attrs={
+            'maxlength': 8, 'placeholder': 'Enter your Kyucsa ID','class': 'form-control rounded'}),label="")
+    
+    def clean_kyucsaId(self):
+        kyucsaId = self.cleaned_data.get('kyucsaId')
+        if kyucsaId and (len(str(kyucsaId)) > 8 or not str(kyucsaId).startswith('7')):
+            raise forms.ValidationError("")
+        return kyucsaId
+
+
 class KYUEmailField(forms.EmailField):
     def validate(self, value):
         super().validate(value)
-        if not value.endswith('@kstd.kyu.ac.ug'):
+        if not value.endswith('@kstd.kyu.ac.ug') or value.endswith('@gmail.com'):
             raise ValidationError('Invalid email address. Please use an email address with the domain @kyu.ac.ug.')
 
 class StudentRegistrationForm(forms.ModelForm):

@@ -13,21 +13,19 @@
 		</div>
 		<div class="p-2 text-align-center justify-content-center">
 			<form id="registrationForm" method="POST" action = "{%url 'signup'%}">
-				{% csrf_token %}
 				<!-- Step 1 -->
 				<div class="step active" data-step="1">
 					<div class="input-group mb-3 input-group-sm">
 						<div class="input-group-prepend">
 						  <span class="input-group-text"><i class="fa-regular fa-user fa-xl"></i>&nbsp;</span>
 					   </div>
-					   <input type="text" id="firstName" class="form-control rounded" name="firstName" placeholder="First Name" required>
-					   <i class="fa fa-user-o" aria-hidden="true"></i>
+					   <input type="text" id="fName" class="form-control rounded" name="firstName" placeholder="First Name" required>
 					 </div>
 					 <div class="input-group mb-3 input-group-sm">
 						<div class="input-group-prepend">
 						  <span class="input-group-text"><i class="fa-regular fa-user fa-xl"></i>&nbsp;</span>
 					   </div>
-					   <input type="text" id="lastName" class="form-control rounded" name="lastName" placeholder="Last Name" required>
+					   <input type="text" id="lName" class="form-control rounded" name="lastName" placeholder="Last Name" required>
 					 </div>
 					 <div class="input-group mb-3 input-group-sm">
 						<div class="input-group-prepend">
@@ -69,7 +67,7 @@
 						<div class="input-group-prepend">
 						  <span class="input-group-text">Student Number</span>
 					   </div>
-					   <input type="text" id="std_no" class="form-control rounded" name="std_no" placeholder="Student Number eg. 2303938484" required>
+					   <input type="text" id="stdno" class="form-control rounded" name="std_no" placeholder="Student Number eg. 2303938484" required>
 					 </div>
 					 <div class="input-group mb-3 input-group-sm">
 						<div class="input-group-prepend">
@@ -86,7 +84,7 @@
 						<div class="input-group-prepend">
 						  <span class="input-group-text">Email</span>
 					   </div>
-					   <input type="email" class="form-control rounded" name="email" placeholder="220000838@kyu.ac.ug" id="email" required>
+					   <input type="email" id="email" class="form-control rounded" name="email" placeholder="220000838@kyu.ac.ug" autocomplete="on" required>
 					 </div>
 					<button class="btn btn-secondary prev-step mr-2">Previous</button>
 					<button class="btn btn-primary next-step">Next</button>

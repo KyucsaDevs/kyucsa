@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#f8f9fa"/>
     <meta name="author" content="KYUCSA">
@@ -81,24 +80,40 @@
   </nav>
   <!--end of navbar-->
   <div class="container-fluid mt-1">
-    <!--alert modal-->
+     <!--alert modal-->
+     {% if messages %}
+     {% for message in messages %}
+     <div {% if message.tags %} class="alert alert-{{message.tags}} alert-dismissible fade show {% endif %}">
+      <strong>{{ message }}</strong>.
+    </div>
+     {% endfor %}
+     {% endif %}
+
+  
+
     {% if messages %}
     {% for message in messages %}
-    <!-- The Modal for error messages -->
-    <div class="modal fade" id="myModal">
-      <div class="modal-dialog modal-sm modal-centered">
-        <div class="modal-content">
-          <!-- Modal body -->
-          <div class="modal-body">
-            <div class="alert alert-{{message.tag}}" role="alert">
-              {{message}}
+            <div {% if message.tags %} class="modal show bg-{{message.tags}} {% endif %}" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            {{ message }}
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          </div>
-        </div>
-      </div>
     {% endfor %}
-    {% endif %}
+{% endif %}
+
+
+
+
+
+
+
+
+
+  
     {% block content %}
     {% endblock %}
     <!--Footer-->
@@ -115,10 +130,10 @@
                   <h3 class="text-secondary">Get In Touch</h3>
                   <span>School of Computing & Information Science,</span><br><span>Kyambogo University,</span><br>Kampala - Uganda<h6 class="text-primary">Follow our socials:</h6></p>
                   <div class="social1">
-                    <a href="https://twitter.com/{{ team.ttwitter }}/" target="_blank"><i class="bi bi-twitter" style="color: #338de1;"></i></a> &nbsp;&nbsp;&nbsp;
-                    <a href="https://github.com/{{ team.tgithub }}/" target="_blank"><i class="bi bi-github" style="color: #3d3e3e;"></i></a> &nbsp;&nbsp;&nbsp;
-                    <a href="https://github.com/{{ team.tgithub }}/" target="_blank"><i class="bi bi-youtube" style="color: #ff0000;"></i></a> &nbsp;&nbsp;&nbsp;
-                    <a href="https://www.linkedin.com/in/{{ team.tlinkedin}}/" target="_blank"><i class="bi bi-linkedin" style="color: #0066ff;"></i></a>
+                    <a href="https://twitter.com/@gdsckyambogo" target="_blank"><i class="bi bi-twitter" style="color: #338de1;"></i></a> &nbsp;&nbsp;&nbsp;
+                    <a href="https://github.com/kyucsa-kyambogo" target="_blank"><i class="bi bi-github" style="color: #3d3e3e;"></i></a> &nbsp;&nbsp;&nbsp;
+                    <a href="https://www.youtube.com/@gdsckyu" target="_blank"><i class="bi bi-youtube" style="color: #ff0000;"></i></a> &nbsp;&nbsp;&nbsp;
+                    <a href="https://www.linkedin.com/company/kyucsa-kyambogo-university-computing-students-association/" target="_blank"><i class="bi bi-linkedin" style="color: #0066ff;"></i></a>
                 </div>
               </div>
 
@@ -141,8 +156,8 @@
                   <li class="list-item"><i class="bi-arrow-right fa-beat-fade" style="color: #48b015;"></i>&nbsp;&nbsp;<a href="{% url 'signup' %}">New Student Registration</a></li>
                   <li class="list-item"><i class="bi-arrow-right fa-beat-fade" style="color: #48b015;"></i>&nbsp;&nbsp;</i><a href="{% url 'verify' %}">Membership Verification</a></li>
                   <li class="list-item"><i class="bi-arrow-right fa-beat-fade" style="color: #48b015;"></i>&nbsp;&nbsp;</i><a href="https://gdsc.community.dev/kyambogo-university/" target="_blank">Join GDSC KYU Chapter</a></li>
-                  <li class="list-item"><i class="bi-arrow-right fa-beat-fade" style="color: #48b015;"></i>&nbsp;&nbsp;</i><a href="https://computer.org/kyambogo-university" target="_blank">Join IEEE CS KYU Chapter</a></li>
-                  <li class="list-item"><i class="bi-arrow-right fa-beat-fade" style="color: #48b015;"></i>&nbsp;&nbsp;<a href="https://amadratitus.github.io/kems/" target="_blank">Contact Developer</a></li>
+                  <li class="list-item"><i class="bi-arrow-right fa-beat-fade" style="color: #48b015;"></i>&nbsp;&nbsp;</i><a href="https://edu.ieee.org/ug-kyu/" target="_blank">IEEE KYU Student Branch</a></li>
+                  <li class="list-item"><i class="bi-arrow-right fa-beat-fade" style="color: #48b015;"></i>&nbsp;&nbsp;<a href="tel:+256700617696" target="_blank">Contact Developer</a></li>
               </ul>
             </div>
           </div>
@@ -153,7 +168,7 @@
         <li class="nav-item">
             <small>&copy; <script>document.write(new Date().getFullYear());</script> KYUCSA&reg;  All rights Reserved</small>
             <br><span><small>Kyambogo University Computing Students Association</small></span><br>
-            <span>Made with <span style="color: #ff0000;">&#10084;&#65030;</span> by Chris</span>
+            <span>Made with <span style="color: #ff0000;">&#10084;&#65030;</span> By <a href="https://www.linkedin.com/in/kris2fa/" target="_blank">Christopher A Titus</a></span>
         </li>
         </ul>
     </nav>
@@ -187,72 +202,36 @@
 
 
 
-        $('#registrationForm').submit(function (e) {
-        e.preventDefault();
 
-        // Serialize form data
-        const formData = $(this).serialize();
 
-        // Submit form data using AJAX
-        $.ajax({
-            url: '/membership/',  // URL mapped to the Django view
-            type: 'POST',
-            data: formData,
-            success: function(response) {
-                if (response.error_messages) {
-                    // Display error messages in a Bootstrap modal
-                    $('#errorModal .modal-body').html(response.error_messages);
-                    $('#errorModal').modal('show');
-                    setTimeout(function(){
-                        $('#errorModal').modal('hide');
-                    }, 5000); // Close modal after 5 seconds
-                } else {
-                    // Display success message in a Bootstrap modal
-                    $('#myModal .modal-body').html(response.message);
-                    $('#myModal').modal('show');
-                    setTimeout(function(){
-                        $('#errorModal').modal('hide');
-                    }, 5000); // Close modal after 5 seconds
-                }
-            },
-            error: function(error) {
-                console.log('Error:', error);
-            }
-        });
-    });
 
-    $(document).ready(function () {
+
+
+
+
+
+$(document).ready(function () {
     let currentStep = 1;
     const stepCount = $('.step').length;
 
     $('.next-step').click(function (e) {
         e.preventDefault();
+
         // Validate the current step before proceeding
-        if (currentStep === 1) {
-            const firstName = $('#firstName').val().trim();
-            const lastName = $('#lastName').val().trim();
-            const programme = $('#sel1').val();
-            const gender = $('#sel2').val();
+        const currentStepFields = $(`.step[data-step="${currentStep}"] input, .step[data-step="${currentStep}"] select`);
+        let isValidStep = true;
 
-            if (firstName === '' || lastName === '' || programme === 'Choose...' || gender === 'Choose...') {
+        currentStepFields.each(function() {
+            const fieldValue = $(this).val().trim();
+            if (fieldValue === '') {
                 alert('Please fill out all the fields.');
-                return;
+                isValidStep = false;
+                return false; // Break the loop if an empty field is found
             }
-        } else if (currentStep === 2) {
-            const academicStatus = $('#sel3').val();
-            const studentNumber = $('#std_no').val().trim();
-            const enrollmentYear = $('#sel4').val();
-            const email = $('#email').val().trim();
-            const emailRegex = /^[\w-]+(\.[\w-]+)*@gmail\.com$|^[\w-]+(\.[\w-]+)*@std\.kyu\.ac\.ug$/i;
+        });
 
-            if (academicStatus === 'Choose...' || studentNumber === '' || enrollmentYear === 'Choose...' || !email.match(emailRegex)) {
-                alert('Please fill out all the fields correctly.');
-                return;
-            }
-        }
-
-        // Proceed to the next step
-        if (currentStep < stepCount) {
+        if (isValidStep) {
+            // Proceed to the next step
             $(`.step[data-step="${currentStep}"]`).removeClass('active');
             currentStep++;
             $(`.step[data-step="${currentStep}"]`).addClass('active');
@@ -271,14 +250,8 @@
     });
 
     $('#registrationForm').submit(function (e) {
-        e.preventDefault();
-        // Form submission logic here
-        // Display success message in a Bootstrap modal
-                    $('#myModal').modal('show');
-                    setTimeout(function(){
-                        $('#myModal').modal('hide');
-                    }, 2000); // Close modal after 5 seconds
-        // alert('Form submitted successfully!');
+        // No additional validation or logic is required here.
+        return true;
     });
 
     function updateProgressBar() {
@@ -286,13 +259,21 @@
         $('.progress-bar').css('width', progressValue + '%').attr('aria-valuenow', progressValue).text(progressValue + '%');
     }
 });
+
+
+
+
+
+
+
+
 </script>
 
 <script>
     //Owl-Carousal Script
     $(document).ready(function(){
       $('.partners-carousel').owlCarousel({
-        autoplay: true,
+       autoplay: true,
        loop: true,
        margin: 15,
        dots: false,

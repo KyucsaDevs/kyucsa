@@ -75,3 +75,9 @@ class Member(models.Model):
   edate = models.DateField(default=timezone.now)
   def __str__(self):
     return f"{self.etitle} {self.etopic} {self.estatus} {self.eurl} {self.edate} {self.ebanner}"
+
+# #Model for Members
+# class memberVerification(models.Model):
+#   kyucsaId = models.CharField(max_length=8)
+#   def __str__(self):
+#     return f"{self.kyucsaId}"
