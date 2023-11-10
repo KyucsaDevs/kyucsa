@@ -3,11 +3,23 @@ import uuid
 import datetime
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
-from .models import StudentRegistration
+from django.core.mail import send_mail
+from django.db import transaction
+from .models import StudentRegistration, KyucsaIdCounter
 
-@receiver(pre_save, sender=StudentRegistration)
-def generate_registration_id(sender, instance, *args, **kwargs):
-    if not instance.registration_id:
-        current_year = datetime.datetime.now().year
-        generated_numbers = uuid.uuid4().int & (1 << 31) - 1  # Generate random numbers
-        instance.registration_id = f'CS{current_year}{generated_numbers:06}'
+def generateKyucsaId():
+    with transaction.atomic():
+        counter, created = KyucsaIdCounter.objects.select_for_update().get_or_create()
+        counter.last_used_id += 1
+        counter.save()
+        return f'{counter.last_used_id:06}'
+
+def sendKyucsaIdEmail(email, kyucsaId):
+    return False
+    # send_mail(
+    #     'Your Kyucsa ID',
+    #     f'Your Kyucsa ID is: {kyucsaId}',
+    #     'from@example.com',
+    #     [email],
+    #     fail_silently=False,
+    # )

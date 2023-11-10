@@ -1,7 +1,15 @@
 from django.db import models
 from django.utils import timezone
 from datetime import datetime
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.core.mail import send_mail
 from django.contrib.auth.models import User
+
+
+
+class KyucsaIdCounter(models.Model):
+      last_used_id = models.PositiveIntegerField(default=70000000)
 
 
 class StudentRegistration(models.Model):
@@ -30,19 +38,27 @@ class StudentRegistration(models.Model):
       ('2023', '2023'),
       ('2023', '2023')
     )
+
     firstName = models.CharField(max_length=15)
     lastName = models.CharField(max_length=15)
+    kyucsaId = models.CharField(max_length=8, unique=True, blank=True, null=True)
     programme = models.CharField(max_length=15, choices=PROGRAMME, default='Choose')
     gender = models.CharField(max_length=10,choices=GENDER, default='Choose')
     academicStatus = models.CharField(max_length=20,choices=ACADEMIC_STATUS, default='Choose')
     studentNumber = models.IntegerField()
     enrollmentYear = models.CharField(max_length=10, choices=EYEARS, default='Choose')
-    email = models.EmailField(max_length=50)
+    email = models.EmailField(max_length=30)
     mobileNumber = models.IntegerField()
-    registeredAt = models.DateField(auto_now=True)
+    registeredAt = models.DateField(default=timezone.now)
+
+    def save(self, *args, **kwargs):
+      #Update registration date on every save
+      self.registratedAt = timezone.now().date()
+      super().save(*args, **kwargs)
+    
 
     def __str__(self):
-        return '{} {} {} {} {} {} {} {} {} {}'.format(self.firstName,self.lastName,self.programme,self.gender,self.academicStatus,self.studentNumber,
+        return '{} {} {} {} {} {} {} {} {} {} {}'.format(self.firstName,self.lastName,self.kyucsaId,self.programme,self.gender,self.academicStatus,self.studentNumber,
                                 self.enrollmentYear,self.email,self.mobileNumber,self.registeredAt)
 
 
@@ -65,16 +81,17 @@ class Gallery(models.Model):
 #Model for Patron
 class Patron(models.Model):
   Pavater = models.ImageField(upload_to='patron/' ,null=True)
-  Pname = models.CharField(max_length=100)
-  Pdesignation = models.CharField(max_length=300)
+  Pname = models.CharField(max_length=50, null=True)
+  Pdesignation = models.CharField(max_length=50, null=True)
+  Padvice = models.CharField(max_length=1000, null=True)
   def __str__(self):
-    return f"{self.Pavater} {self.Pname} {self.Pdesignation}"
+    return f"{self.Pname} {self.Pdesignation} {self.Pavater} {self.Padvice}"
 
 #Model for Team
 class Team(models.Model):
   tphoto = models.ImageField(upload_to='team/' ,default='team/avatar.png',null=True)
-  tname = models.CharField(max_length=100)
-  tpost = models.CharField(max_length=50)
+  tname = models.CharField(max_length=100, null=True)
+  tpost = models.CharField(max_length=50, null=True)
   ttwitter = models.CharField(max_length=20, null=True)
   tgithub = models.CharField(max_length=20, null=True)
   tlinkedin = models.CharField(max_length=20, null=True)

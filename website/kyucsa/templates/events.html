@@ -2,13 +2,12 @@
 {% load static %}
 {% block content %}
 <div class="container pb-4">
+    <div class="section-header pt-5 text-center" data-aos="fade-up" data-aos-delay="70">
+        <h3 class="fw-bold text-primary">WORKSHOPS AND EVENTS</h3>
+        <p class="section-description">Find out what happened in our previous events.</p>
+    </div>
         <section id="portfolio" class="portfolio">
             <div class="container" data-aos="fade-up">
-                <div class="section-header">
-                    <h3 class="text-center fw-bold text-primary">WORKSHOPS AND EVENTS</h3>
-                    <p class="section-description">Find out what happened in our previous events.</p>
-                </div>
-
                 <div class="row justify-content-center text-align-center" data-aos="fade-up" data-aos-delay="50">
                     <div class="d-flex justify-content-center">
                         <ul id="portfolio-flters">
@@ -23,7 +22,7 @@
 
                 <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
                     <!--EVENTS  -->
-                    <!--Model Data-->
+                    <!--Events Card-->
                     {% for event in events %}
                     <div class="col-lg-4 col-md-6 portfolio-item {{ event.estatus }}" id="next">
                     <div class="card">
@@ -60,7 +59,7 @@
                       </div>
                       {% endfor %}
                     </div>
-                    <!--Model Data End-->
+                    <!--End Event Card-->
                 </div>
             </div>
         </section>

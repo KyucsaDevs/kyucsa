@@ -34,6 +34,7 @@ class StudentRegistrationForm(forms.ModelForm):
                 'mobileNumber': forms.TextInput(attrs={'type':'tel', 'class':'form-control rounded','placeholder':'Mobile Number'})
             }
         labels = {}
+
         def clean(self):
             cleaned_data = super().clean()
             firstName = cleaned_data.get('firstName', None)
@@ -45,7 +46,7 @@ class StudentRegistrationForm(forms.ModelForm):
             enrollmentYear = cleaned_data.get('enrollmentYear', None)
             email = cleaned_data.get('email', None)
             mobileNumber = cleaned_data.get('mobileNumber', None)
-            registeredAt = cleaned_data.get('registeredAt', None)
+            registeredAt = cleaned_data.get('registeredAt', date.now())
 
             # Check if any required field is empty
             required_fields = ['firstName', 'lastName', 'programme', 'gender', 'academicStatus', 'studentNumber', 'enrollmentYear', 'email', 'mobileNumber']

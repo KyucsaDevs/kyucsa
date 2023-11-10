@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<div class="container">
+<div class="container pb-4">
+    <div class="section-header pt-4 text-center" data-aos="fade-up" data-aos-delay="70">
+        <h2 class="fw-bold text-primary">KYUCSA EXECUTIVES</h2>
+        <p class="section-subtitle">Get to know our team that works very hard to ensure smooth running of
+            the associations activities.</p>
+    </div>
 	<main id="mai">
         <!-- ======= Team Section ======= -->
         <section id="team">
             <div class="container" data-aos="fade-up">
-                <div class="section-header">
-                    <h3 class="section-title"><strong class="text-primary">KYUCSA EXECUTIVES</strong></h3>
-                    <p class="section-description">Get to know our team that works very hard to ensure smooth running of
-                        the associations activities.</p>
-                </div>
                 <div class="row">
                     {% for team in teams %}
                     <div class="col-lg-3 col-md-6">

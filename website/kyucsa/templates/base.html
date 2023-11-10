@@ -80,45 +80,25 @@
   </nav>
   <!--end of navbar-->
   <div class="container-fluid mt-1">
-     <!--alert modal-->
-     {% if messages %}
-     {% for message in messages %}
-     <div {% if message.tags %} class="alert alert-{{message.tags}} alert-dismissible fade show {% endif %}">
-      <strong>{{ message }}</strong>.
-    </div>
-     {% endfor %}
-     {% endif %}
-
-  
-
+    <!--End of Message Modal-->
     {% if messages %}
     {% for message in messages %}
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div {% if message.tags %} class="modal-content bg-{{message.tags}} {% endif %}">
-                        <div class="modal-body">
-                            {{ message }}
-                        </div>
-                    </div>
-                </div>
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog modal-sm"><div {% if message.tags %} class="modal-content bg-{{message.tags}} {% endif %}">
+                <div class="modal-body text-white">{{ message }}</div></div>
             </div>
-            <script>
-              document.addEventListener('DOMContentLoaded', function () {
-                var myModal = new bootstrap.Modal(document.getElementById('myModal'));
-                myModal.show();
-              });
-            </script>
+        </div>
+        <script>
+          document.addEventListener('DOMContentLoaded', function () {
+          var myModal = new bootstrap.Modal(document.getElementById('myModal'));
+          myModal.show();
+          // Hide the modal after 2 seconds
+          setTimeout(function () { myModal.hide(); }, 4000);
+          });
+        </script>
     {% endfor %}
-{% endif %}
-
-
-
-
-
-
-
-
-
+    {% endif %}
+    <!--End of Message Modal-->
   
     {% block content %}
     {% endblock %}

@@ -34,29 +34,24 @@
 			</div>
 		<!--Patron Section-->
 		<section class="pt-5 wow fadeInUp" data-aos="fade-up">
-			<!--Patron Section-->
-			<div class="container pt-4 wow fadeInUp">
-			<div class="row p-1 justify-content-center align-items-center">
 				{% for patron in patrons %}
-					<div class="col-sm-3 card">
-						<img src="{{ patron.Pavater.url }}" alt="{{ patron.Pdesignation }}" class="card-img-top" width="100%">
+				<div class="container">
+					<div class="row p-3">
+					<div class="card col-sm-3">
+						<img src="{{ patron.Pavater.url }}" alt="{{ patron.Pdesignation }}" class="card-img-top">
 					</div>
-					<div class="col-sm-7 p-4">
-						It is with immense pride and gratitude that I extend my warmest greetings to you all. KYUCSA has been a driving force behind fostering innovation, learning, and camaraderie within the field of computer science in Kyambogo University.
-
-						As we embrace the future, I am committed to nurturing an inclusive and diverse community, where every member's voice is heard and respected. Together, we will continue to organize workshops, seminars, and events that elevate our knowledge and passion for technology.
-
-						Let us forge ahead, united in our pursuit of excellence and making a positive impact on society. Thank you for being an integral part of KYUCSA's journey.
-						<br>
-						<div class="text-center pt-3">
-						<span class="text-primary">Mr. {{ patron.Pname }} </span>
-						<br>
-						<span class="text-secondary">{{ patron.Pdesignation }}</span>
+					<div class="col-sm-9 mx-auto">
+						<p class="p-1">{{ patron.Padvice }}</p>
+							<br>
+							<div class="text-center pt-3">
+							<span class="text-primary">Mr. {{ patron.Pname }} </span>
+							<br>
+							<span class="text-secondary">{{ patron.Pdesignation }}</span>
+							</div>
 						</div>
-					</div>
+						</div>
+				</div>
 				{% endfor %}
-			</div>
-			</div>
 			<!--Patron Section End-->
 		</section>
 

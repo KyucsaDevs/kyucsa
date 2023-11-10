@@ -16,6 +16,11 @@
 				<div class="row">
 					{%for field in form%}
 					<div class="col-md-6 p-1">{{field|as_crispy_field}}</div>
+					{% if field.errors %}
+						{% for error in field.errors %}
+						<div class="invalid-feedback">{{ error }}</div>
+						{% endfor %}
+					{% endif %}
 					{%endfor%}
 				</div>
 
