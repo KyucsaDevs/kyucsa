@@ -1,5 +1,6 @@
 from django import forms
-from .models import Student
+from datetime import *
+from .models import StudentRegistration
 from django.core.exceptions import ValidationError
 
 
@@ -15,57 +16,54 @@ class memberVerificationForm(forms.Form):
             raise forms.ValidationError("")
         return kyucsaId
 
-
-class KYUEmailField(forms.EmailField):
-    def validate(self, value):
-        super().validate(value)
-        if not value.endswith('@kstd.kyu.ac.ug') or value.endswith('@gmail.com'):
-            raise ValidationError('Invalid email address. Please use an email address with the domain @kyu.ac.ug.')
-
 class StudentRegistrationForm(forms.ModelForm):
-    PROGRAM_CHOICES = (
-        ('BITC', 'BITC'),
-        ('BIS', 'BIS'),
-        ('DCS', 'DCS')
-    )
-    program = forms.ChoiceField(
-        choices=PROGRAM_CHOICES, 
-        widget=forms.Select(attrs={'class': 'form-control', 'placeholder':'Study Program'}))
-    GENDER_CHOICES = (
-        ('', 'Select your gender'),
-        ('MALE', 'MALE'),
-        ('FEMALE', 'FEMALE')
-    )
-    gender = forms.ChoiceField(
-        choices=GENDER_CHOICES, 
-        widget=forms.Select(attrs={'class': 'form-control', 'placeholder':'Gender'}))
-    STATUS_CHOICES = (
-        ('', 'Select your program status'),
-        ('CONTINUING', 'CONTINUING'),
-        ('ALUMNI', 'ALUMNI')
-    )
-    status = forms.ChoiceField(
-        choices=STATUS_CHOICES,
-        widget=forms.Select(attrs={'class': 'form-control', 'placeholder':'Program Status'}))
-    
-    email = KYUEmailField(
-        widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Enter your email'})
-    )
-    
+
     class Meta:
-        model = Student
-        fields = ['firstName', 'lastName', 'email', 'programme', 'enrollment', 'std_no', 'gender', 'status']
-        labels = {
-                # Set label for first_name to False to hide it
-                'firstName': False, 'lastName':False, 'email':False, 'program':False,
-                'enrollment':False, 'student_no':False, 'gender':False, 'status':False,
+        model = StudentRegistration
+        fields = ('firstName','lastName','programme','gender','academicStatus','studentNumber','enrollmentYear','email','mobileNumber')
+        exclude = ['registeredAt']  #registration Date excluded from display since it is auto calculated.
+        widgets = {
+                'firstName': forms.TextInput(attrs={'type':'text', 'class':'form-control rounded','placeholder':'first Name'}),
+                'lastName': forms.TextInput(attrs={'type':'text', 'class':'form-control rounded','placeholder':'Last Name'}),
+                'programme': forms.Select(attrs={'type':'text', 'class':'form-control rounded','placeholder':'Choose ...'}),
+                'gender': forms.Select(attrs={'type':'text', 'class':'form-control rounded','placeholder':'Choose ...'}),
+                'academicStatus': forms.Select(attrs={'type':'text', 'class':'form-control rounded','placeholder':'Choose ...'}),
+                'studentNumber': forms.TextInput(attrs={'type':'text', 'class':'form-control rounded','placeholder':'Student Number'}),
+                'enrollmentYear': forms.Select(attrs={'type':'text', 'class':'form-control rounded','placeholder':'enrollment Year'}),
+                'email': forms.TextInput(attrs={'type':'email', 'class':'form-control rounded','placeholder':'Email ...'}),
+                'mobileNumber': forms.TextInput(attrs={'type':'tel', 'class':'form-control rounded','placeholder':'Mobile Number'})
             }
-    # Apply Bootstrap classes to the form widgets
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['firstName'].widget.attrs.update({'class': 'form-control', 'placeholder':'First Name'})
-        self.fields['lastName'].widget.attrs.update({'class': 'form-control', 'placeholder':'Last Name'})
-        self.fields['email'].widget.attrs.update({'class': 'form-control', 'placeholder':'Email'})
-        self.fields['programme'].widget.attrs.update({'class': 'form-control', 'placeholder':'Study Program'})
-        self.fields['enrollment'].widget.attrs.update({'class': 'form-control', 'placeholder':'Enrollment Year'})
-        self.fields['std_no'].widget.attrs.update({'class': 'form-control', 'placeholder':'Student Number'})
+        labels = {}
+        def clean(self):
+            cleaned_data = super().clean()
+            firstName = cleaned_data.get('firstName', None)
+            lastName = cleaned_data.get('lastName', None)
+            programme = cleaned_data.get('programme', None)
+            gender = cleaned_data.get('gender', None)
+            academicStatus = cleaned_data.get('academicStatus', None)
+            studentNumber = cleaned_data.get('studentNumber', None)
+            enrollmentYear = cleaned_data.get('enrollmentYear', None)
+            email = cleaned_data.get('email', None)
+            mobileNumber = cleaned_data.get('mobileNumber', None)
+            registeredAt = cleaned_data.get('registeredAt', None)
+
+            # Check if any required field is empty
+            required_fields = ['firstName', 'lastName', 'programme', 'gender', 'academicStatus', 'studentNumber', 'enrollmentYear', 'email', 'mobileNumber']
+            for field_name in required_fields:
+                if not cleaned_data.get(field_name):
+                    self.add_error(field_name, 'This field is required.')
+
+            # Check if 'programme' is set to 'Choose'
+            if programme and programme == 'Choose':
+                self.add_error('programme', 'Please choose a valid option.')
+            # Check if 'gender' is set to 'Choose'
+            if gender and gender == 'Choose':
+                self.add_error('gender', 'Please choose a valid option.')
+            # Check if 'academicStatus' is set to 'Choose'
+            if academicStatus and academicStatus == 'Choose':
+                self.add_error('academicStatus', 'Please choose a valid option.')
+            # Check if 'enrollmentYear' is set to 'Choose'
+            if enrollmentYear and enrollmentYear == 'Choose':
+                self.add_error('enrollmentYear', forms.ValidationError('Please choose a valid option.'))
+
+            return cleaned_data

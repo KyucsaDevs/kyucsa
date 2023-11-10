@@ -5,7 +5,7 @@
         <section id="portfolio" class="portfolio">
             <div class="container" data-aos="fade-up">
                 <div class="section-header">
-                    <h3 class="text-center fw-bold">WORKSHOPS AND EVENTS</h3>
+                    <h3 class="text-center fw-bold text-primary">WORKSHOPS AND EVENTS</h3>
                     <p class="section-description">Find out what happened in our previous events.</p>
                 </div>
 
@@ -13,9 +13,9 @@
                     <div class="d-flex justify-content-center">
                         <ul id="portfolio-flters">
                             <li date-fileter="*" class="filter-all">All</li>
-                            <li data-filter=".live">Live</li>
-                            <li data-filter=".upcoming">Upcoming Events</li>
-                            <li data-filter=".past">Past Events</li>
+                            <li data-filter=".live">Live <div class="spinner-grow spinner-grow-sm text-danger"></div></li>
+                            <li data-filter=".upcoming"><div class="spinner-border spinner-border-sm text-light"></div> Upcoming Events</li>
+                            <li data-filter=".past"><div class="spinner-border spinner-border-sm text-success"></div> Past Events</li>
 
                         </ul>
                     </div>
@@ -28,21 +28,32 @@
                     <div class="col-lg-4 col-md-6 portfolio-item {{ event.estatus }}" id="next">
                     <div class="card">
                         <img class="card-img-top" src="{{ event.ebanner.url}}" alt="{{ event.etitle }}" style="width:100%">
-                        <div class="card-body card-img-overlay bg-primary portfolio-info" style="margin-top: 8rem;">
+                        <span class="card-img-overlay card-text text-left p-1">
+                            {% if event.estatus == "live" %}
+                            <div class="spinner-grow spinner-grow-sm text-danger"></div>
+                            {% endif%}
+                            {% if event.estatus == "upcoming" %}
+                            <div class="spinner-grow spinner-grow-sm text-light"></div>
+                            {% endif%}
+                            {% if event.estatus == "past" %}
+                            <div class="spinner-grow spinner-grow-sm text-success"></div>
+                            {% endif%}
+                        </span>
+                        <div class="card-body bg-light portfolio-info" style="margin-top: 8rem;">
                           <div class="row">
                             <div class="col-6">
-                                <h4 class="fw-bold">{{ event.etitle }}</h4>
+                                <h4 class="fw-bold text-primary">{{ event.etitle }}</h4>
                             </div>
                            <div class="col-6 ">
-                           <p class="text-dark fw-bold">{{ event.edate }}</p>
+                           <p class="text-warning fw-bold">{{ event.edate }}</p>
                            </div>
                          </div>
                          <div class="row">
                             <div class="col-6">
-                             <p>{{ event.etopic }}</p>
+                             <p class="text-info">{{ event.etopic }}</p>
                             </div>
                            <div class="col-6 ">
-                            <a href="{{ event.eslide.url }}" class="text-light">Get Slide</a>
+                            <a type="button" href="{{ event.eslide.url }}" class="btn btn-primary btn-sm fw-bold text-light">Download Slide</a>
                            </div>
                          </div>
                         </div>

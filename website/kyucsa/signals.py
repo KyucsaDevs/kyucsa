@@ -3,9 +3,9 @@ import uuid
 import datetime
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
-from .models import Student
+from .models import StudentRegistration
 
-@receiver(pre_save, sender=Student)
+@receiver(pre_save, sender=StudentRegistration)
 def generate_registration_id(sender, instance, *args, **kwargs):
     if not instance.registration_id:
         current_year = datetime.datetime.now().year

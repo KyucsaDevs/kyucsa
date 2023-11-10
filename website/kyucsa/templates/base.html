@@ -93,15 +93,21 @@
 
     {% if messages %}
     {% for message in messages %}
-            <div {% if message.tags %} class="modal show bg-{{message.tags}} {% endif %}" tabindex="-1" role="dialog">
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
-                    <div class="modal-content">
+                    <div {% if message.tags %} class="modal-content bg-{{message.tags}} {% endif %}">
                         <div class="modal-body">
                             {{ message }}
                         </div>
                     </div>
                 </div>
             </div>
+            <script>
+              document.addEventListener('DOMContentLoaded', function () {
+                var myModal = new bootstrap.Modal(document.getElementById('myModal'));
+                myModal.show();
+              });
+            </script>
     {% endfor %}
 {% endif %}
 
@@ -199,73 +205,6 @@
     document.querySelectorAll('img[data-src]').forEach(img => {
         imageObserver.observe(img);
     })
-
-
-
-
-
-
-
-
-
-
-
-$(document).ready(function () {
-    let currentStep = 1;
-    const stepCount = $('.step').length;
-
-    $('.next-step').click(function (e) {
-        e.preventDefault();
-
-        // Validate the current step before proceeding
-        const currentStepFields = $(`.step[data-step="${currentStep}"] input, .step[data-step="${currentStep}"] select`);
-        let isValidStep = true;
-
-        currentStepFields.each(function() {
-            const fieldValue = $(this).val().trim();
-            if (fieldValue === '') {
-                alert('Please fill out all the fields.');
-                isValidStep = false;
-                return false; // Break the loop if an empty field is found
-            }
-        });
-
-        if (isValidStep) {
-            // Proceed to the next step
-            $(`.step[data-step="${currentStep}"]`).removeClass('active');
-            currentStep++;
-            $(`.step[data-step="${currentStep}"]`).addClass('active');
-            updateProgressBar();
-        }
-    });
-
-    $('.prev-step').click(function (e) {
-        e.preventDefault();
-        if (currentStep > 1) {
-            $(`.step[data-step="${currentStep}"]`).removeClass('active');
-            currentStep--;
-            $(`.step[data-step="${currentStep}"]`).addClass('active');
-            updateProgressBar();
-        }
-    });
-
-    $('#registrationForm').submit(function (e) {
-        // No additional validation or logic is required here.
-        return true;
-    });
-
-    function updateProgressBar() {
-        const progressValue = Math.round((currentStep / stepCount) * 100);
-        $('.progress-bar').css('width', progressValue + '%').attr('aria-valuenow', progressValue).text(progressValue + '%');
-    }
-});
-
-
-
-
-
-
-
 
 </script>
 

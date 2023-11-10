@@ -1,20 +1,49 @@
 from django.db import models
 from django.utils import timezone
 from datetime import datetime
-#Student Modals
-class Student(models.Model):
-    kyucsa_id = models.CharField(max_length=10, unique=True)
-    std_no = models.CharField(max_length=15, unique=True)
-    firstName = models.CharField(max_length=50, blank=False)
-    lastName = models.CharField(max_length=50)
-    email = models.EmailField(max_length=100)
-    programme = models.CharField(max_length=30)
-    enrollment = models.DateField(max_length=30)
-    gender = models.CharField(max_length=30)
-    status = models.CharField(max_length=30)
+from django.contrib.auth.models import User
+
+
+class StudentRegistration(models.Model):
+    PROGRAMME = (
+      ('Choose', 'Choose...'),
+      ('BITC', 'BITC'),
+      ('BIS', 'BIS'),
+      ('BLIS', 'BLIS')
+      )
+    GENDER = (
+      ('Choose', 'Choose...'),
+      ('M','Male'),
+      ('F','Female')
+      )
+    ACADEMIC_STATUS =(
+      ('Choose', 'Choose...'),
+      ('Continuing', 'Continuing'),
+      ('Graduated', 'Graduated')
+      )
+    EYEARS = (
+      ('Choose', 'Choose...'),
+      ('2023', '2023'),
+      ('2023', '2023'),
+      ('2023', '2023'),
+      ('2023', '2023'),
+      ('2023', '2023'),
+      ('2023', '2023')
+    )
+    firstName = models.CharField(max_length=15)
+    lastName = models.CharField(max_length=15)
+    programme = models.CharField(max_length=15, choices=PROGRAMME, default='Choose')
+    gender = models.CharField(max_length=10,choices=GENDER, default='Choose')
+    academicStatus = models.CharField(max_length=20,choices=ACADEMIC_STATUS, default='Choose')
+    studentNumber = models.IntegerField()
+    enrollmentYear = models.CharField(max_length=10, choices=EYEARS, default='Choose')
+    email = models.EmailField(max_length=50)
+    mobileNumber = models.IntegerField()
+    registeredAt = models.DateField(auto_now=True)
 
     def __str__(self):
-        return self.firstName + " " + self.lastName
+        return '{} {} {} {} {} {} {} {} {} {}'.format(self.firstName,self.lastName,self.programme,self.gender,self.academicStatus,self.studentNumber,
+                                self.enrollmentYear,self.email,self.mobileNumber,self.registeredAt)
 
 
 #Model for Partners Logo
@@ -65,19 +94,11 @@ class Event(models.Model):
   def __str__(self):
     return f"{self.etitle} {self.etopic} {self.estatus} {self.eurl} {self.edate} {self.ebanner} {self.eslide}"
 
-#Model for Members
-class Member(models.Model):
-  etitle = models.CharField(max_length=200)
-  etopic = models.CharField(max_length=100)
-  ebanner = models.ImageField(upload_to='events/' ,null=True)
-  estatus = models.CharField(max_length=30)
-  eurl = models.URLField(max_length=255)
-  edate = models.DateField(default=timezone.now)
+#Model for Events
+class Technologies(models.Model):
+  tTitle = models.CharField(max_length=200)
+  tDescription = models.CharField(max_length=300)
+  tPhoto = models.ImageField(upload_to='technologies/' ,null=True)
+  tUrl = models.URLField(max_length=255)
   def __str__(self):
-    return f"{self.etitle} {self.etopic} {self.estatus} {self.eurl} {self.edate} {self.ebanner}"
-
-# #Model for Members
-# class memberVerification(models.Model):
-#   kyucsaId = models.CharField(max_length=8)
-#   def __str__(self):
-#     return f"{self.kyucsaId}"
+    return f"{self.tTitle} {self.tDescription} {self.tPhoto} {self.tUrl}"
