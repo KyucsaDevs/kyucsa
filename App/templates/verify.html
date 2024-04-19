@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container pb-4">
+	<h5 class="text-center pt-5"><strong class="text-primary">KYUCSA</strong> MEMBERSHIP VERIFICATION</h5>
+	<div class="d-flex justify-content-center align-items-center pt-3 pb-5">
+		<div class="card mx-auto my-auto bg-light pb-5" style="width:400px">
+		<div class="card-body">
+		  <form id="memberVerificationForm" action="{% url 'verify' %}" method="POST">
+			{% csrf_token %}
+			<div class="input-group mb-3 input-group-sm">
+				<div class="input-group-prepend">
+				  <span class="input-group-text"><i class="fa-regular bi-key fa-xl"></i>&nbsp;</span>
+			   </div>
+			   {{ form }}
+			 </div>
+			<div class="pb-3">
+				<button type="submit" class="btn btn-success font-weight-bold d-block mx-auto">Verify</button>
+			</div>
+			<div class="">
+			   <span class="text-muted">If you don't have kyucsa ID, SignUp <a href="{% url 'signup' %}">here.</a></span>
+			</div>
+		 </form>
+	
+		</div>
+	  </div>
+	</div>
+</div>
+{%endblock%}

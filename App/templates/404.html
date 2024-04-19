@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style id="" media="all">
+    * {-webkit-box-sizing: border-box;box-sizing: border-box;}
+body {padding: 0;margin: 0;}
+
+#notfound {position: relative;height: 100vh;}
+
+#notfound .notfound {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+
+.notfound {max-width: 410px;width: 100%;text-align: center;}
+
+.notfound h2 {
+    font-family: montserrat, sans-serif;
+    color: #000;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 0;
+}
+
+.notfound p {
+    font-family: montserrat, sans-serif;
+    color: #000;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+.notfound a {
+    font-family: montserrat, sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+    text-transform: uppercase;
+    background: #0046d5;
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 40px;
+    color: #fff;
+    font-weight: 700;
+    -webkit-box-shadow: 0 4px 15px -5px #0046d5;
+    box-shadow: 0 4px 15px -5px #0046d5;
+}
+</style>
+</head>
+<body>
+<div id="notfound">
+<div class="notfound">
+<h2>404 - Page not found</h2>
+<p>The page you are looking for might have been removed had its name changed or is temporarily unavailable.</p>
+<a href="{% url 'index' %}">Go To Homepage</a>
+</div>
+</div>
+</body>
+{%endblock%}

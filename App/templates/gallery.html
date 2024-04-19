@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+	<main id="mai">
+        <!-- ======= Team Section ======= -->
+        <section id="team">
+            <div class="container" data-aos="fade-up">
+                <div class="section-header">
+                    <h3 class="section-title">Photos <strong class="text-primary">preserve</strong> memories.</h3>
+                    <p class="section-description">Real people, captured. Photography has the power to reflect the world around us, give voice to individuals and groups within our communities — and most importantly — tell their story.</p>
+                </div>
+                <div class="row">
+                    {% for photo in gallery %}
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card member" data-aos="fade-up" data-aos-delay="200">
+                            <span class="card-img-overlay card-text text-left text-primary font-weight-bold p-1">{{photo.gyear}}</span>
+                            <img class="card-img-top" src="{{photo.gimage.url}}" alt="{{photo.gdescription}}" style="width: 100%;">
+                            <div class="card-body">
+                            <span>{{photo.gdescription}}</span>
+                        </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </section><!-- End Team Section -->
+
+
+    </main><!-- End #main -->
+</div>
+{%endblock%}

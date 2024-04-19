@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid pb-5">
+			<div class="container">
+				<div class="row align-items-center mt-5">
+					<div class="col-12 col-sm-6">
+						<div class="hero-content">
+							<div class="hero-title__group">
+								<div class="hero-title">
+									<h4 class="zuri">Kyambogo University Computing<br>Students Association (KYUCSA).</h4>
+								</div>
+								<div class="Hero--Subtitle">
+									<p class="lead">
+										<first-letter> <b>KYUCSA</b></first-letter> is a students Association which aims at
+										helping
+										university students learn various skills in Tech. These include but are not limited
+										to
+										<second-letter> mobile</second-letter> and<first-letter> web development skills
+										</first-letter>, <third-letter>design thinking skills</third-letter>, Networking &
+										System Adminstration, and
+										<forth-letter> leadership skills.</forth-letter>
+									</p>
+								</div>
+							</div><a href="{% url 'technologies' %}" class="hero-button" rel="noopener"><i
+									class="fab fa-meetup"></i> &nbsp; Explore</a>
+						</div>
+					</div>
+					<div class="col-12 col-sm-5 ml-auto ml-pic">
+						<div class="hero-figure"><img data-src="{% static '/images/assets/diversity.png' %}" class="img-fluid w-100"
+								alt="Illustration of diversity in our developer community"></div>
+					</div>
+				</div>
+			</div>
+		<!--Patron Section-->
+		<section class="pt-5 wow fadeInUp" data-aos="fade-up">
+				{% for patron in patrons %}
+				<div class="container">
+					<div class="row p-3">
+					<div class="card col-sm-3">
+						<img src="{{ patron.Pavater.url }}" alt="{{ patron.Pdesignation }}" class="card-img-top">
+					</div>
+					<div class="col-sm-9 mx-auto">
+						<p class="p-1">{{ patron.Padvice }}</p>
+							<br>
+							<div class="text-center pt-3">
+							<span class="text-primary">Mr. {{ patron.Pname }} </span>
+							<br>
+							<span class="text-secondary">{{ patron.Pdesignation }}</span>
+							</div>
+						</div>
+						</div>
+				</div>
+				{% endfor %}
+			<!--Patron Section End-->
+		</section>
+
+		<section id="overview" class="section-spacer">
+				<!--Concepts Section-->
+			<div class="container pt-5" data-aos="fade-up">
+				<div class="card-deck">
+					<div class="card">
+						<div class="card-body">
+							<div class="text-center pt-1"><i class="fas fa-rocket ghost-blue"></i> CONCEPT OF KYUCSA</div>
+							<hr>
+						<p>The best way to learn is through practice and exposure to various technologies. By engaging in such activities, members are able to gain development and networking skilling.</p>
+						</div>
+					</div>
+					<div class="card">
+						
+						<div class="card-body">
+							<div class="text-center pt-1"><i class="fas fa-lightbulb ghost-green"></i> WHY KYUCSA</div>
+							<hr>
+						<p>For students to learn practical skills, solve problems through technology and inspire them to be world class developers, product designers, cyber experts and changemakers.</p>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-body">
+							<div class="text-center pt-1"><i class="fas fa-users ghost-red"></i> TARGET AUDIENCE</div>
+							<hr>
+						<p>KYUCSA activities are targeted at University students and any individual who wants to learn or build their development skills as well as grow their knowledge concerning tech.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+	<!--Concept Section Section End-->
+		</section>
+
+		<section id="opportunities" class="section-spacer section-opp">
+			<!--Opportunities Section-->
+	<div class="container pt-2 pb-2" data-aos="fade-up">
+		<div class="text-center">
+			<h3 class="text-primary wow fadeInUp">Opportunities</h3>
+			<span>KYUCSA provides students with various opportunities and trainings which includes:</span>
+		</div>
+		<div class="container pt-3">
+			<div class="row p-2">
+					<div class="col-sm-6 p-2 wow fadeInUp">
+						<div class="p-3 bg-secondary text-light rounded">
+						Grow their knowledge on developer technologies and more through peer to peer workshops and events.
+						</div>
+					</div>
+					<div class="col-sm-6 p-2 wow fadeInUp">
+						<div class="p-3 bg-secondary text-light rounded">
+						Gain relevant industry experience by solving problems for local organizations with technology based solutions.
+						</div>
+					</div>
+			</div>
+			<div class="row p-2">
+					<div class="col-sm-6 p-2 wow fadeInUp">
+						<div class="p-3 bg-secondary text-light rounded">
+						Showcase their prototypes and solutions to their local community and industry leaders.
+						</div>
+					</div>
+					<div class="col-sm-6 p-2 wow fadeInUp">
+						<div class="p-3 bg-secondary text-light rounded">
+						Getting inspiration to become world-class developers and changemakers from sharing others' success stories.
+						</div>
+					</div>
+			</div>
+		</div>
+	</div>
+	<!--Opportunities Section End-->
+		</section>
+		<!--Partners Logo Section-->
+		<section class="section-spacer section-opp">
+			<!--Partners Logo Carousal-->
+			<div class="partners">
+				<div class="container">
+					<h2 class="text-center text-primary wow fadeInUp pb-2">Partners</h2>
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="owl-carousel owl-theme partners-carousel">
+								{% for logo in logos %}
+								<div class="boxs"><a href="{{ logo.pwebsite }}" target="_blank"><img alt="{{ logo.pname }}" class="partners-logo rounded" src="{{ logo.plogo.url }}" width="40"></a></div>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--Partners Logo Carousal End-->
+		</section>
+		
+		
+</div>
+{%endblock%}
