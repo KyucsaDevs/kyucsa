@@ -13,11 +13,11 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
+# Take environment variables from .env file
+environ.Env.read_env(os.path.join(BASE_DIR, 'webSite/','.env'))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY= 'django-insecure-k126hu3z=mk2s!f_-*#$w4e^7zs%xhu02uhhd1)@9xoz#3vgl2'
+SECRET_KEY= env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG', )
@@ -81,12 +81,12 @@ WSGI_APPLICATION = 'webSite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': env('DATABASE_NAME'),
-        'USER': env('DATABASE_USER'),
-        'PASSWORD': env('DATABASE_PASSWORD'),
-        'HOST': env('DATABASE_HOST'),
-        'PORT': env('DATABASE_PORT', cast=int),
+        'ENGINE': env('ENGINE'),
+        'NAME': env('NAME'),
+        'USER': env('USER'),
+        'PASSWORD': env('PASSWORD'),
+        'HOST': env('HOST'),
+        'PORT': env('PORT', cast=int),
     }
 }
 
