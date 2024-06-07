@@ -13,8 +13,9 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Take environment variables from .env file
-environ.Env.read_env(os.path.join(BASE_DIR, 'webSite/','.env'))
+# Initialize environment variables
+# This will read environment variables from the environment, including those set in Vercel
+environ.Env.read_env()  
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY= env('SECRET_KEY')
