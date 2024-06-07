@@ -22,7 +22,7 @@ SECRET_KEY= env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG', )
 
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', "kyucsa.kyu.ac.ug"]
+ALLOWED_HOSTS = ['.vercel.app', 'now.sh','127.0.0.1', "kyucsa.kyu.ac.ug"]
 
 
 # Application definition
