@@ -123,4 +123,4 @@ git push origin feature/your-feature-name
 
 If you have any questions or need further assistance, feel free to reach out at:
 
-- Web Lead Chris: kris.skyfallgraphix@gmail.com
+- Web Lead Chris
